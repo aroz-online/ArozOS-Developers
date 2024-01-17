@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Overview on Developers | ArozOS</title>
+    <link>/docs/</link>
+    <description>Recent content in Overview on Developers | ArozOS</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 11 Feb 2019 19:27:37 +1000</lastBuildDate>
+    <atom:link href="/docs/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Introduction to agi</title>
+      <link>/docs/runtimes/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/runtimes/</guid>
+      <description>AGI (ArozOS Gateway Interface) is a JavaScript scripting interface provided by ArozOS that allow user scope code execution with high flexibility and automation. The JavaScript VM is provided by Otto and is mostly compatible with modern JavaScript syntax.&#xA;The followings describe the different ways to call &amp;amp; use AGI scripts.&#xA;WebApp (Front-end) Request Call by WebApps by logged in users. Serve as a simple backend function like a php script does with build in authentication and permission checks.</description>
+    </item>
+    <item>
+      <title>Create New WebApp</title>
+      <link>/docs/setup_dev_env/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/setup_dev_env/</guid>
+      <description>Create New WebApp Folder Structure To create a new WebApp, create a folder under the ./web/ folder under arozos root. After the folder is created, place the following files into the folder. (Assume the module name is &amp;ldquo;MyWebapp&amp;rdquo;)&#xA;. └── web/ └── MyWebapp/ ├── init.agi ├── index.html └── img/ ├── icon.png └── desktop_icon.png The icons are required to be in following sizes&#xA;Icon Filename Size icon.png 64 x 64 px desktop_icon.</description>
+    </item>
+    <item>
+      <title>Start Script (init.agi)</title>
+      <link>/docs/init-agi/</link>
+      <pubDate>Mon, 11 Feb 2019 19:27:37 +1000</pubDate>
+      <guid>/docs/init-agi/</guid>
+      <description>The start script (or commonly known as the init.agi file), is the config and environment checking script that allow ArozOS to know the given folder is a WebApp instead of a resources file. This file define the way and specification on how to launch the WebApp module on the web desktop interface.&#xA;Here is a minimal example of the init.agi file.&#xA;/* Example Module author: tobychui This module is just an example for showcasing the basics of how agi scripting works with the front-end in ArozOS environment */ //Define the launch settings for the module var moduleLaunchInfo = { Name: &amp;#34;Example&amp;#34;, Group: &amp;#34;Interface Module&amp;#34;, IconPath: &amp;#34;Example/img/small_icon.</description>
+    </item>
+    <item>
+      <title>Request &amp; Response</title>
+      <link>/docs/agi_resp/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/agi_resp/</guid>
+      <description>Front-end 🡲 Backend (AGI) Request When requesting the AGI execution interface, you can post data with your request. ArozOS provides two way for front-end to request the AGI script placed in your ./web/ folder.&#xA;Request via ao_module wrapper (Recommended) You can import ao_module.js and use the ao_module_agirun function call to execute a agi script. Here is an example.&#xA;//index.html //Call to helloworld.js with timeout set to 3 seconds ao_module_agirun(&amp;#34;demo/backend/helloworld.js&amp;#34;, { foo: &amp;#34;bar&amp;#34; }, function(resp){ alert(resp); },function(){ alert(&amp;#34;Oops.</description>
+    </item>
+    <item>
+      <title>Front-end Development</title>
+      <link>/docs/frontend_intro/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/frontend_intro/</guid>
+      <description>Work In progress</description>
+    </item>
+    <item>
+      <title>🔹 Float-Windows API</title>
+      <link>/docs/frontend_window-control/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/frontend_window-control/</guid>
+      <description>Work In progress</description>
+    </item>
+    <item>
+      <title>🔹 File Selector &amp; File Passing</title>
+      <link>/docs/frontend_files/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/frontend_files/</guid>
+      <description>Work In progress</description>
+    </item>
+    <item>
+      <title>Backend Development</title>
+      <link>/docs/backend_intro/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/backend_intro/</guid>
+      <description>Work In progress</description>
+    </item>
+    <item>
+      <title>🔸 system</title>
+      <link>/docs/backend_std/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/backend_std/</guid>
+      <description>All the functions in the system library are usable in all agi runtime and do not need to include using requirelib function.&#xA;CONST BUILD_VERSION INTERNVAL_VERSION LOADED_MODULES LOADED_STORAGES VAR HTTP_RESP HTTP_HEADER (Default: &amp;#34;text/plain&amp;#34;) You can set HTTP_RESP with HTTP_HEADER to create custom response headers. For example, you can serve an HTML file using agi gateway&#xA;HTTP_RESP = &amp;#34;&amp;lt;html&amp;gt;&amp;lt;body&amp;gt;Hello World&amp;lt;/body&amp;gt;&amp;lt;/html&amp;gt;&amp;#34;; HTTP_HEADER = &amp;#34;text/html&amp;#34;; Response Handlers sendResp(&amp;#34;Any string&amp;#34;); sendJSONResp(JSON.stringify({text: &amp;#34;Hello World&amp;#34;)); //ArozOS v1 / v2 sendJSONResp({foo: &amp;#39;bar&amp;#39;}); //ArozOS v2 only Database Access newDBTableIfNotExists(&amp;#34;tablename&amp;#34;); dropDBTable(&amp;#34;tablename&amp;#34;); writeDBItem(&amp;#34;tablename&amp;#34;, &amp;#34;key&amp;#34;, &amp;#34;value&amp;#34;); readDBItem(&amp;#34;tablename&amp;#34;, &amp;#34;key&amp;#34;); listDBTable(&amp;#34;tablename&amp;#34;); //Return key value array deleteDBItem(&amp;#34;tablename&amp;#34;, &amp;#34;key&amp;#34;); Register and Packages registerModule(JSON.</description>
+    </item>
+    <item>
+      <title>🔸 user</title>
+      <link>/docs/backend_user/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/backend_user/</guid>
+      <description>The user library is automatically imported when the execution scope is a &amp;ldquo;user&amp;rdquo; scope instead of a &amp;ldquo;system&amp;rdquo; scope. For example, WebApp agi calls, serverless and personal homepage are all accessible to the user scope functions.&#xA;CONST USERNAME USERICON USERQUOTA_TOTAL USERQUOTA_USED USER_VROOTS //Return an array of root names USER_MODULES //Accessible modules in array, might return [&amp;#34;*&amp;#34;] for admin permission Permission getUserPermissionGroup(); //Get the permission group name(s) this user are in userIsAdmin(); //Return true / false User Creation, Edit and Removal All the command in this section require administrator permission.</description>
+    </item>
+    <item>
+      <title>🔸 serverless</title>
+      <link>/docs/backend_serverless/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/backend_serverless/</guid>
+      <description>Serverless function are only usable in serverless execution scope. Developers can access agi and do dynamic programming via external agi call using ARZ Serverless panel. The following APIs allow devs to access GET, POST parameters and request Body on demand.&#xA;CONST REQ_METHOD //Get the method of request, e.g. GET / HEAD / POST FUNCTIONS getPara(key) //Return the GET value of given key postPara(key) //Return the POST value of given key readBody() //Get the whole request body as string Notes These functions are only usable when called via the ARZ Serverless endpoints (URI start from /api/remote/)</description>
+    </item>
+    <item>
+      <title>🔸 filelib</title>
+      <link>/docs/backend_filelib/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/backend_filelib/</guid>
+      <description>filelib is the core library for users to interact with the file system. You can include the library with requirelib(&amp;quot;filelib&amp;quot;). Example as follows.&#xA;if (!requirelib(&amp;#34;filelib&amp;#34;)){ console.log(&amp;#34;Filelib import failed&amp;#34;); }else{ console.log(filelib.fileExists(&amp;#34;user:/Desktop/&amp;#34;)); } Filelib functions Here is a list of functions and example provided by filelib.&#xA;filelib.writeFile(&amp;#34;user:/Desktop/test.txt&amp;#34;, &amp;#34;Hello World&amp;#34;); //Write to file filelib.readFile(&amp;#34;user:/Desktop/test.txt&amp;#34;); //Read from file filelib.deleteFile(&amp;#34;user:/Desktop/test.txt&amp;#34;); //Delete a file by given path filelib.readdir(&amp;#34;user:/Desktop/&amp;#34;); //List all subdirectories within this directory filelib.walk(&amp;#34;user:/Desktop/&amp;#34;); //Recursive scan dir and return all files and folder in subdirs, network drive are not supported filelib.</description>
+    </item>
+    <item>
+      <title>🔸 appdata</title>
+      <link>/docs/backend_appdata/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/backend_appdata/</guid>
+      <description>An API for access files inside the web folder. This API only provide read only functions. Include the appdata lib as follows.&#xA;requirelib(&amp;#34;appdata&amp;#34;); appdata functions appdata.readFile(&amp;#34;UnitTest/appdata.txt&amp;#34;); //Return false (boolean) if read failed appdata.listDir(&amp;#34;UnitTest/backend/&amp;#34;); //Return a list of files in JSON string Example Usages Read File /* appdata.readFile.js This script test the appdata read file function. This should be able to read file */ //Require the appdata library var succ = requirelib(&amp;#34;appdata&amp;#34;); function main(){ //Get a file from the UnitTest WebApp.</description>
+    </item>
+    <item>
+      <title>🔸 imagelib</title>
+      <link>/docs/backend_imagelib/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/backend_imagelib/</guid>
+      <description>A basic image handling library to process images. Allowing basic image resize and get image dimensions&#xA;//Include the library requirelib(&amp;#34;imagelib&amp;#34;); ImageLib functions imagelib.getImageDimension(&amp;#34;user:/Desktop/test.jpg&amp;#34;); //return [width, height] imagelib.resizeImage(&amp;#34;user:/Desktop/input.png&amp;#34;, &amp;#34;user:/Desktop/output.png&amp;#34;, 500, 300); //Resize input.png to 500 x 300 pixal and write to output.png imagelib.loadThumbString(&amp;#34;user:/Desktop/test.jpg&amp;#34;); //Load the given file&amp;#39;s thumbnail as base64 string, return false if failed imagelib.cropImage(&amp;#34;user:/Desktop/test.jpg&amp;#34;, &amp;#34;user:/Desktop/out.jpg&amp;#34;,100,100,200,200)); imagelib.classify(&amp;#34;tmp:/classify.jpg&amp;#34;, &amp;#34;yolo3&amp;#34;); //Classify an image using neural network, since v1.119 Crop Image Options Crop the given image with the following arguemnts: 1) Input file (virtual path) 2) Output file (virtual path, will be overwritten if exists) 3) Position X 4) Position Y 5) Crop With 6) Crop Height return true if success, false if failed AI Classifier Options (since v1.</description>
+    </item>
+    <item>
+      <title>🔸 http</title>
+      <link>/docs/backend_http/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/backend_http/</guid>
+      <description>A basic http function group that allow GET / POST / HEAD / Download request to other web resources&#xA;//Include the library requirelib(&amp;#34;http&amp;#34;); http functions http.get(&amp;#34;http://example.com/api/&amp;#34;); //Create a get request, return the respond body http.post(&amp;#34;http://localhost:8080/system/file_system/listDir&amp;#34;, JSON.stringify({ dir: &amp;#34;user:/Desktop&amp;#34;, sort: &amp;#34;default&amp;#34; })); //Create a POST request with JSON payload http.head(&amp;#34;http://localhost:8080/&amp;#34;, &amp;#34;Content-Type&amp;#34;); //Get the header field &amp;#34;Content-Type&amp;#34; from the requested url, leave 2nd paramter empty to return the whole header in JSON string http.</description>
+    </item>
+    <item>
+      <title>🔸 websocket</title>
+      <link>/docs/backend_websocket/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/backend_websocket/</guid>
+      <description>websocket library provide request upgrade from normal HTTP request to WebSocket connections.&#xA;//Include the library requirelib(&amp;#34;websocket&amp;#34;); websocket functions websocket.upgrade(10); //Timeout value in integer, return false if failed var recv = websocket.read(); //Blocking websocket listen websocket.send(&amp;#34;Hello World&amp;#34;); //Send websocket to client (web UI) websocket.close(); //Close websocket connection Usage Example Font-end&#xA;function getWSEndpoint(){ //Open opeartion in websocket let protocol = &amp;#34;wss://&amp;#34;; if (location.protocol !== &amp;#39;https:&amp;#39;) { protocol = &amp;#34;ws://&amp;#34;; } wsControlEndpoint = (protocol + window.</description>
+    </item>
+    <item>
+      <title>🔸 iot</title>
+      <link>/docs/backend_iot/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/backend_iot/</guid>
+      <description>The iot library provide access to the iot hardware control endpoints (or endpoints for short) in a much easier to use abstraction. Note that not all iot devices are supported. If you have an unsupported iot device, please contribute a driver for your brand of iot devices.&#xA;//Include the library requirelib(&amp;#34;iot&amp;#34;); iot functions iot.ready() //Return the iot manager status. Return true if ready, false otherwise. iot.scan() //Force the iot manager to scan nearby iot devices iot.</description>
+    </item>
+    <item>
+      <title>🔸 share</title>
+      <link>/docs/backend_share/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/backend_share/</guid>
+      <description>The share API allow access to the ArozOS share interface and generate UUID based on the shared file.&#xA;requirelib(&amp;#34;share&amp;#34;); share functions share.shareFile(&amp;#34;user:/Desktop/test.pptx&amp;#34;, 300); //File virtual path and timeout in seconds, return UUID of share share.getFileShareUUID(&amp;#34;user:/Desktop/test.pptx&amp;#34;); //Get the share UUID of a given file, return null if not shared share.fileIsShared(&amp;#34;user:/Desktop/test.pptx&amp;#34;); //Return true / false share.checkShareExists(shareUUID); //Return true / false share.checkSharePermission(shareUUID); //Return the share permission of shares (anyone / signedin / samegroup), return null if shareUUID invalid.</description>
+    </item>
+  </channel>
+</rss>

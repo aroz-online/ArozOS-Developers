@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>🔸 serverless - Developers | ArozOS</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link rel="icon" href="favicon.png">
+
+  
+  
+  <link rel="stylesheet" href="/css/style.min.2abe4f9deee2e3e8ec440009003f7bb21c5c60b7915a1cf8ec38e682289bee57.css">
+  
+
+  
+
+</head>
+
+<body class='page page-default-single'>
+  <div id="main-menu-mobile" class="main-menu-mobile">
+  <ul>
+    
+    
+    <li class="menu-item-home">
+      <a href="/">
+        <span>Home</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-docs">
+      <a href="/docs/">
+        <span>Docs</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-source">
+      <a href="https://github.com/tobychui/arozos">
+        <span>Source</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+  <div class="wrapper">
+    <div class='header'>
+  <div class="container">
+    <div class="logo">
+      <a href=""><img width="70" height="70" alt="Logo" src="/images/logo.svg" /></a>
+    </div>
+    <div class="logo-mobile">
+      <a href=""><img  width="70" height="70" alt="Logo" src="/images/logo-mobile.svg" /></a>
+    </div>
+    <div id="main-menu" class="main-menu">
+  <ul>
+    
+    
+    <li class="menu-item-home">
+      <a href="/">
+        <span>Home</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-docs">
+      <a href="/docs/">
+        <span>Docs</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-source">
+      <a href="https://github.com/tobychui/arozos">
+        <span>Source</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+    <button id="toggle-main-menu-mobile" class="hamburger hamburger--slider" type="button">
+  <span class="hamburger-box">
+    <span class="hamburger-inner"></span>
+  </span>
+</button>
+  </div>
+</div>
+
+
+    
+    
+    
+    
+    
+    
+
+    
+    <div class="container pt-2 pt-md-6 pb-3 pb-md-6">
+      <div class="row">
+        <div class="col-12 col-md-3 mb-3">
+          <div class="sidebar">
+            
+<div class="docs-menu">
+  <h4>Docs</h4>
+  <ul>
+    
+    <li class="">
+      <a href="/docs/runtimes/">Introduction to agi</a>
+    </li>
+    
+    <li class="">
+      <a href="/docs/setup_dev_env/">Create New WebApp</a>
+    </li>
+    
+    <li class="">
+      <a href="/docs/init-agi/">Start Script (init.agi)</a>
+    </li>
+    
+    <li class="">
+      <a href="/docs/agi_resp/">Request &amp; Response</a>
+    </li>
+    
+    <li class="">
+      <a href="/docs/frontend_intro/">Front-end Development</a>
+    </li>
+    
+    <li class="">
+      <a href="/docs/frontend_window-control/">🔹 Float-Windows API</a>
+    </li>
+    
+    <li class="">
+      <a href="/docs/frontend_files/">🔹 File Selector &amp; File Passing</a>
+    </li>
+    
+    <li class="">
+      <a href="/docs/backend_intro/">Backend Development</a>
+    </li>
+    
+    <li class="">
+      <a href="/docs/backend_std/">🔸 system</a>
+    </li>
+    
+    <li class="">
+      <a href="/docs/backend_user/">🔸 user</a>
+    </li>
+    
+    <li class="active ">
+      <a href="/docs/backend_serverless/">🔸 serverless</a>
+    </li>
+    
+    <li class="">
+      <a href="/docs/backend_filelib/">🔸 filelib</a>
+    </li>
+    
+    <li class="">
+      <a href="/docs/backend_appdata/">🔸 appdata</a>
+    </li>
+    
+    <li class="">
+      <a href="/docs/backend_imagelib/">🔸 imagelib</a>
+    </li>
+    
+    <li class="">
+      <a href="/docs/backend_http/">🔸 http</a>
+    </li>
+    
+    <li class="">
+      <a href="/docs/backend_websocket/">🔸 websocket</a>
+    </li>
+    
+    <li class="">
+      <a href="/docs/backend_iot/">🔸 iot</a>
+    </li>
+    
+    <li class="">
+      <a href="/docs/backend_share/">🔸 share</a>
+    </li>
+    
+  </ul>
+</div>
+
+          </div>
+        </div>
+        <div class="col-12 col-md-9">
+          
+<h1 class="title">🔸 serverless</h1>
+<div class="content ">
+  <p>Serverless function are only usable in serverless execution scope. Developers can access agi and do dynamic programming via external agi call using ARZ Serverless panel. The following APIs allow devs to access GET, POST parameters and request Body on demand.</p>
+<h4 id="const">CONST</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">REQ_METHOD //Get the method of request, e.g. GET / HEAD / POST
+</span></span></code></pre></div><h4 id="functions">FUNCTIONS</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">getPara(key) //Return the GET value of given key
+</span></span><span class="line"><span class="cl">postPara(key) //Return the POST value of given key
+</span></span><span class="line"><span class="cl">readBody() //Get the whole request body as string
+</span></span></code></pre></div><h5 id="notes">Notes</h5>
+<ul>
+<li>
+<p>These functions are only usable when called via the ARZ Serverless endpoints (URI start from <code>/api/remote/</code>)</p>
+</li>
+<li>
+<p>When there is an invalid operations or undefined keys, these functions always return null as default.</p>
+</li>
+</ul>
+
+</div>
+</div>
+
+        </div>
+      </div>
+    </div>
+    
+  </div>
+
+  <div class="sub-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="sub-footer-inner">
+          
+            
+<div class="social">
+    
+        <a href="https://github.com/tobychui/arozos" target="blank"><img height="20" width="20" src="/images/social/github.svg" title="Github" alt="Github" /></a>
+    
+        <a href="https://t.me/ArOZBeta" target="blank"><img height="20" width="20" src="/images/social/telegram.svg" title="Telegram" alt="Telegram" /></a>
+    
+</div>
+
+          
+          
+            <div class="copyright">CopyRight <a href="https://arozos.com">ArozOS</a> Project | Licensed under GPLv3</div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/scripts.min.302a6fc365d5139fb98cf60bdb8f715d96257ea189161d36c190ccfa8182e569.js"></script>
+  
+
+  
+  
+  
+    
+  
+
+
+</body>
+
+</html>

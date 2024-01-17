@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>🔸 user - Developers | ArozOS</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link rel="icon" href="favicon.png">
+
+  
+  
+  <link rel="stylesheet" href="/css/style.min.2abe4f9deee2e3e8ec440009003f7bb21c5c60b7915a1cf8ec38e682289bee57.css">
+  
+
+  
+
+</head>
+
+<body class='page page-default-single'>
+  <div id="main-menu-mobile" class="main-menu-mobile">
+  <ul>
+    
+    
+    <li class="menu-item-home">
+      <a href="/">
+        <span>Home</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-docs">
+      <a href="/docs/">
+        <span>Docs</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-source">
+      <a href="https://github.com/tobychui/arozos">
+        <span>Source</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+  <div class="wrapper">
+    <div class='header'>
+  <div class="container">
+    <div class="logo">
+      <a href=""><img width="70" height="70" alt="Logo" src="/images/logo.svg" /></a>
+    </div>
+    <div class="logo-mobile">
+      <a href=""><img  width="70" height="70" alt="Logo" src="/images/logo-mobile.svg" /></a>
+    </div>
+    <div id="main-menu" class="main-menu">
+  <ul>
+    
+    
+    <li class="menu-item-home">
+      <a href="/">
+        <span>Home</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-docs">
+      <a href="/docs/">
+        <span>Docs</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-source">
+      <a href="https://github.com/tobychui/arozos">
+        <span>Source</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+    <button id="toggle-main-menu-mobile" class="hamburger hamburger--slider" type="button">
+  <span class="hamburger-box">
+    <span class="hamburger-inner"></span>
+  </span>
+</button>
+  </div>
+</div>
+
+
+    
+    
+    
+    
+    
+    
+
+    
+    <div class="container pt-2 pt-md-6 pb-3 pb-md-6">
+      <div class="row">
+        <div class="col-12 col-md-3 mb-3">
+          <div class="sidebar">
+            
+<div class="docs-menu">
+  <h4>Docs</h4>
+  <ul>
+    
+    <li class="">
+      <a href="/docs/runtimes/">Introduction to agi</a>
+    </li>
+    
+    <li class="">
+      <a href="/docs/setup_dev_env/">Create New WebApp</a>
+    </li>
+    
+    <li class="">
+      <a href="/docs/init-agi/">Start Script (init.agi)</a>
+    </li>
+    
+    <li class="">
+      <a href="/docs/agi_resp/">Request &amp; Response</a>
+    </li>
+    
+    <li class="">
+      <a href="/docs/frontend_intro/">Front-end Development</a>
+    </li>
+    
+    <li class="">
+      <a href="/docs/frontend_window-control/">🔹 Float-Windows API</a>
+    </li>
+    
+    <li class="">
+      <a href="/docs/frontend_files/">🔹 File Selector &amp; File Passing</a>
+    </li>
+    
+    <li class="">
+      <a href="/docs/backend_intro/">Backend Development</a>
+    </li>
+    
+    <li class="">
+      <a href="/docs/backend_std/">🔸 system</a>
+    </li>
+    
+    <li class="active ">
+      <a href="/docs/backend_user/">🔸 user</a>
+    </li>
+    
+    <li class="">
+      <a href="/docs/backend_serverless/">🔸 serverless</a>
+    </li>
+    
+    <li class="">
+      <a href="/docs/backend_filelib/">🔸 filelib</a>
+    </li>
+    
+    <li class="">
+      <a href="/docs/backend_appdata/">🔸 appdata</a>
+    </li>
+    
+    <li class="">
+      <a href="/docs/backend_imagelib/">🔸 imagelib</a>
+    </li>
+    
+    <li class="">
+      <a href="/docs/backend_http/">🔸 http</a>
+    </li>
+    
+    <li class="">
+      <a href="/docs/backend_websocket/">🔸 websocket</a>
+    </li>
+    
+    <li class="">
+      <a href="/docs/backend_iot/">🔸 iot</a>
+    </li>
+    
+    <li class="">
+      <a href="/docs/backend_share/">🔸 share</a>
+    </li>
+    
+  </ul>
+</div>
+
+          </div>
+        </div>
+        <div class="col-12 col-md-9">
+          
+<h1 class="title">🔸 user</h1>
+<div class="content ">
+  <p>The user library is automatically imported when the execution scope is a &ldquo;user&rdquo; scope instead of a &ldquo;system&rdquo; scope. For example, WebApp agi calls, serverless and personal homepage are all accessible to the user scope functions.</p>
+<h4 id="const">CONST</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">USERNAME</span>
+</span></span><span class="line"><span class="cl"><span class="nx">USERICON</span>
+</span></span><span class="line"><span class="cl"><span class="nx">USERQUOTA_TOTAL</span>
+</span></span><span class="line"><span class="cl"><span class="nx">USERQUOTA_USED</span>
+</span></span><span class="line"><span class="cl"><span class="nx">USER_VROOTS</span> <span class="c1">//Return an array of root names
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">USER_MODULES</span> <span class="c1">//Accessible modules in array, might return [&#34;*&#34;] for admin permission
+</span></span></span></code></pre></div><hr>
+<h4 id="permission">Permission</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">getUserPermissionGroup</span><span class="p">();</span> <span class="c1">//Get the permission group name(s) this user are in
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">userIsAdmin</span><span class="p">();</span> <span class="c1">//Return true / false
+</span></span></span></code></pre></div><h4 id="user-creation-edit-and-removal">User Creation, Edit and Removal</h4>
+<p>All the command in this section require administrator permission. To check if user is admin, use <code>userIsAdmin()</code>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">userExists</span><span class="p">(</span><span class="nx">username</span><span class="p">);</span> <span class="c1">//Return true / false
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">createUser</span><span class="p">(</span><span class="nx">username</span><span class="p">,</span> <span class="nx">password</span><span class="p">,</span> <span class="nx">defaultGroup</span><span class="p">);</span>    <span class="c1">//defaultGroup must be one of the permission group that exists in the system
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">removeUser</span><span class="p">(</span><span class="nx">username</span><span class="p">);</span> <span class="c1">//Return true if success, false if failed
+</span></span></span></code></pre></div><h4 id="library-requirement">Library requirement</h4>
+<p>You can request other library to be loaded and have extra functions to work with files / images.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">requirelib(&#34;filelib&#34;);
+</span></span></code></pre></div><h4 id="execute-tasks-in-another-routine">Execute tasks in another routine</h4>
+<p>You can use the execd function to execute something that is long pulling after the main thread returned the results of the current calculation.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"> <span class="n">execd</span><span class="p">(</span><span class="s2">&#34;execd.js&#34;</span><span class="p">,</span> <span class="s2">&#34;Payload to child&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><p>To check if the current script is being executed as routine process, check for the following variable.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">if (typeof PARENT_DETACHED == &#39;undefined&#39;){
+</span></span><span class="line"><span class="cl">    //This is parent
+</span></span><span class="line"><span class="cl">}else if (PARENT_DETACHED == true){
+</span></span><span class="line"><span class="cl">    //This is child
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></div><p>To get the payload in child routine, get the following variable (Default: empty string)</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">PARENT_PAYLOAD
+</span></span></code></pre></div><hr>
+<h4 id="deprecated">Deprecated</h4>
+<p>Deprecated since v2.0</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">decodeVirtualPath</span><span class="p">(</span><span class="s2">&#34;user:/Desktop&#34;</span><span class="p">);</span> <span class="c1">//Convert virtual path (e.g. user:/Desktop) to real path (e.g. ./files/user/username/Desktop)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">decodeAbsoluteVirtualPath</span><span class="p">(</span><span class="s2">&#34;user:/Desktop&#34;</span><span class="p">);</span> <span class="c1">//Same as decodeVirtualPath but return in absolute path instead of relative path from the arozos binary root
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">encodeRealPath</span><span class="p">(</span><span class="s2">&#34;files/users/User/Desktop&#34;</span><span class="p">);</span> <span class="c1">//Convert realpath into virtual path
+</span></span></span></code></pre></div>
+</div>
+</div>
+
+        </div>
+      </div>
+    </div>
+    
+  </div>
+
+  <div class="sub-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="sub-footer-inner">
+          
+            
+<div class="social">
+    
+        <a href="https://github.com/tobychui/arozos" target="blank"><img height="20" width="20" src="/images/social/github.svg" title="Github" alt="Github" /></a>
+    
+        <a href="https://t.me/ArOZBeta" target="blank"><img height="20" width="20" src="/images/social/telegram.svg" title="Telegram" alt="Telegram" /></a>
+    
+</div>
+
+          
+          
+            <div class="copyright">CopyRight <a href="https://arozos.com">ArozOS</a> Project | Licensed under GPLv3</div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/scripts.min.302a6fc365d5139fb98cf60bdb8f715d96257ea189161d36c190ccfa8182e569.js"></script>
+  
+
+  
+  
+  
+    
+  
+
+
+</body>
+
+</html>

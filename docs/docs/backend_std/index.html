@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>🔸 system - Developers | ArozOS</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link rel="icon" href="favicon.png">
+
+  
+  
+  <link rel="stylesheet" href="/css/style.min.2abe4f9deee2e3e8ec440009003f7bb21c5c60b7915a1cf8ec38e682289bee57.css">
+  
+
+  
+
+</head>
+
+<body class='page page-default-single'>
+  <div id="main-menu-mobile" class="main-menu-mobile">
+  <ul>
+    
+    
+    <li class="menu-item-home">
+      <a href="/">
+        <span>Home</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-docs">
+      <a href="/docs/">
+        <span>Docs</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-source">
+      <a href="https://github.com/tobychui/arozos">
+        <span>Source</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+  <div class="wrapper">
+    <div class='header'>
+  <div class="container">
+    <div class="logo">
+      <a href=""><img width="70" height="70" alt="Logo" src="/images/logo.svg" /></a>
+    </div>
+    <div class="logo-mobile">
+      <a href=""><img  width="70" height="70" alt="Logo" src="/images/logo-mobile.svg" /></a>
+    </div>
+    <div id="main-menu" class="main-menu">
+  <ul>
+    
+    
+    <li class="menu-item-home">
+      <a href="/">
+        <span>Home</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-docs">
+      <a href="/docs/">
+        <span>Docs</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-source">
+      <a href="https://github.com/tobychui/arozos">
+        <span>Source</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+    <button id="toggle-main-menu-mobile" class="hamburger hamburger--slider" type="button">
+  <span class="hamburger-box">
+    <span class="hamburger-inner"></span>
+  </span>
+</button>
+  </div>
+</div>
+
+
+    
+    
+    
+    
+    
+    
+
+    
+    <div class="container pt-2 pt-md-6 pb-3 pb-md-6">
+      <div class="row">
+        <div class="col-12 col-md-3 mb-3">
+          <div class="sidebar">
+            
+<div class="docs-menu">
+  <h4>Docs</h4>
+  <ul>
+    
+    <li class="">
+      <a href="/docs/runtimes/">Introduction to agi</a>
+    </li>
+    
+    <li class="">
+      <a href="/docs/setup_dev_env/">Create New WebApp</a>
+    </li>
+    
+    <li class="">
+      <a href="/docs/init-agi/">Start Script (init.agi)</a>
+    </li>
+    
+    <li class="">
+      <a href="/docs/agi_resp/">Request &amp; Response</a>
+    </li>
+    
+    <li class="">
+      <a href="/docs/frontend_intro/">Front-end Development</a>
+    </li>
+    
+    <li class="">
+      <a href="/docs/frontend_window-control/">🔹 Float-Windows API</a>
+    </li>
+    
+    <li class="">
+      <a href="/docs/frontend_files/">🔹 File Selector &amp; File Passing</a>
+    </li>
+    
+    <li class="">
+      <a href="/docs/backend_intro/">Backend Development</a>
+    </li>
+    
+    <li class="active ">
+      <a href="/docs/backend_std/">🔸 system</a>
+    </li>
+    
+    <li class="">
+      <a href="/docs/backend_user/">🔸 user</a>
+    </li>
+    
+    <li class="">
+      <a href="/docs/backend_serverless/">🔸 serverless</a>
+    </li>
+    
+    <li class="">
+      <a href="/docs/backend_filelib/">🔸 filelib</a>
+    </li>
+    
+    <li class="">
+      <a href="/docs/backend_appdata/">🔸 appdata</a>
+    </li>
+    
+    <li class="">
+      <a href="/docs/backend_imagelib/">🔸 imagelib</a>
+    </li>
+    
+    <li class="">
+      <a href="/docs/backend_http/">🔸 http</a>
+    </li>
+    
+    <li class="">
+      <a href="/docs/backend_websocket/">🔸 websocket</a>
+    </li>
+    
+    <li class="">
+      <a href="/docs/backend_iot/">🔸 iot</a>
+    </li>
+    
+    <li class="">
+      <a href="/docs/backend_share/">🔸 share</a>
+    </li>
+    
+  </ul>
+</div>
+
+          </div>
+        </div>
+        <div class="col-12 col-md-9">
+          
+<h1 class="title">🔸 system</h1>
+<div class="content ">
+  <p>All the functions in the system library are usable in all agi runtime and do not need to include using <code>requirelib</code> function.</p>
+<h4 id="const">CONST</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">BUILD_VERSION
+</span></span><span class="line"><span class="cl">INTERNVAL_VERSION
+</span></span><span class="line"><span class="cl">LOADED_MODULES
+</span></span><span class="line"><span class="cl">LOADED_STORAGES
+</span></span></code></pre></div><h4 id="var">VAR</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">HTTP_RESP
+</span></span><span class="line"><span class="cl">HTTP_HEADER (Default: &#34;text/plain&#34;)
+</span></span></code></pre></div><p>You can set HTTP_RESP with HTTP_HEADER to create custom response headers.
+For example, you can serve an HTML file using agi gateway</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">HTTP_RESP</span> <span class="o">=</span> <span class="s2">&#34;&lt;html&gt;&lt;body&gt;Hello World&lt;/body&gt;&lt;/html&gt;&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">HTTP_HEADER</span> <span class="o">=</span> <span class="s2">&#34;text/html&#34;</span><span class="p">;</span>
+</span></span></code></pre></div><hr>
+<h4 id="response-handlers">Response Handlers</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">sendResp</span><span class="p">(</span><span class="s2">&#34;Any string&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nx">sendJSONResp</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span><span class="nx">text</span><span class="o">:</span> <span class="s2">&#34;Hello World&#34;</span><span class="p">));</span> <span class="c1">//ArozOS v1 / v2
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">sendJSONResp</span><span class="p">({</span><span class="nx">foo</span><span class="o">:</span> <span class="s1">&#39;bar&#39;</span><span class="p">});</span> <span class="c1">//ArozOS v2 only
+</span></span></span></code></pre></div><h4 id="database-access">Database Access</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">newDBTableIfNotExists</span><span class="p">(</span><span class="s2">&#34;tablename&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nx">dropDBTable</span><span class="p">(</span><span class="s2">&#34;tablename&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nx">writeDBItem</span><span class="p">(</span><span class="s2">&#34;tablename&#34;</span><span class="p">,</span> <span class="s2">&#34;key&#34;</span><span class="p">,</span> <span class="s2">&#34;value&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nx">readDBItem</span><span class="p">(</span><span class="s2">&#34;tablename&#34;</span><span class="p">,</span> <span class="s2">&#34;key&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nx">listDBTable</span><span class="p">(</span><span class="s2">&#34;tablename&#34;</span><span class="p">);</span> <span class="c1">//Return key value array
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">deleteDBItem</span><span class="p">(</span><span class="s2">&#34;tablename&#34;</span><span class="p">,</span> <span class="s2">&#34;key&#34;</span><span class="p">);</span>
+</span></span></code></pre></div><h4 id="register-and-packages">Register and Packages</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">registerModule</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">moduleLaunchInfo</span><span class="p">));</span> <span class="c1">//See start script sections for examples
+</span></span></span></code></pre></div><h4 id="structure--oop">Structure &amp; OOP</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">includes</span><span class="p">(</span><span class="s2">&#34;hello world.js&#34;</span><span class="p">);</span> <span class="c1">//Include another js / agi file within the current running one, return false if failed
+</span></span></span></code></pre></div><h4 id="include-other-script-files">Include other script files</h4>
+<p>You can also include another js / agi file to load shared code between scripts</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">includes(&#34;hello world.js&#34;)
+</span></span></code></pre></div><h4 id="print-to-stdout-console">Print to STDOUT (console)</h4>
+<p>To print something for debug, you can print text directly to ArOZ Online Core terminal using</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">console.log(&#34;text&#34;);
+</span></span></code></pre></div><h4 id="delayed-operations">Delayed operations</h4>
+<p>Synchronized delay (or blocking delay) can be used with the delay function (ms)</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">delay(5000);
+</span></span></code></pre></div><p>For async delayed / timer ticking operations like setTimeout or setInterval is currently not supported.</p>
+<h4 id="exit--terminate-runtime">Exit &amp; Terminate Runtime</h4>
+<p>Instantly terminate and exit the runtime</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">exit();
+</span></span></code></pre></div><hr>
+<h4 id="deprecated">Deprecated</h4>
+<p>Deprecated since v2.108</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">requirepkg(&#34;ffmpeg&#34;);
+</span></span><span class="line"><span class="cl">execpkg(&#34;ffmpeg&#34;,&#39;-i &#34;files/users/TC/Desktop/群青.mp3&#34; &#34;files/users/TC/Desktop/群青.flac&#39;); //ffmpeg must be required() before use
+</span></span></code></pre></div>
+</div>
+</div>
+
+        </div>
+      </div>
+    </div>
+    
+  </div>
+
+  <div class="sub-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="sub-footer-inner">
+          
+            
+<div class="social">
+    
+        <a href="https://github.com/tobychui/arozos" target="blank"><img height="20" width="20" src="/images/social/github.svg" title="Github" alt="Github" /></a>
+    
+        <a href="https://t.me/ArOZBeta" target="blank"><img height="20" width="20" src="/images/social/telegram.svg" title="Telegram" alt="Telegram" /></a>
+    
+</div>
+
+          
+          
+            <div class="copyright">CopyRight <a href="https://arozos.com">ArozOS</a> Project | Licensed under GPLv3</div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/scripts.min.302a6fc365d5139fb98cf60bdb8f715d96257ea189161d36c190ccfa8182e569.js"></script>
+  
+
+  
+  
+  
+    
+  
+
+
+</body>
+
+</html>
