@@ -119,7 +119,7 @@
     </li>
     
     <li class="">
-      <a href="https://aroz-online.github.io/ArozOS-Developers/docs/frontend_intro/">Front-end Development</a>
+      <a href="https://aroz-online.github.io/ArozOS-Developers/docs/frontend/">Front-end Development</a>
     </li>
     
     <li class="active ">
@@ -131,7 +131,7 @@
     </li>
     
     <li class="">
-      <a href="https://aroz-online.github.io/ArozOS-Developers/docs/backend_intro/">Backend Development</a>
+      <a href="https://aroz-online.github.io/ArozOS-Developers/docs/backend/">Backend Development</a>
     </li>
     
     <li class="">
@@ -183,7 +183,92 @@
           
 <h1 class="title">🔹 Float-Windows API</h1>
 <div class="content ">
-  <p>Work In progress</p>
+  <h2 id="requirements">Requirements</h2>
+<p>Float Windows (fw) are the draggable windows on the ArozOS web desktops that display the contents of WebApps. Float Windows properties can be controlled by the app front-end script using the <code>ao_module.js</code> api wrapper in the <code>web/script/</code> folder. To use it, import the ao_module wrapper from your webapp html files.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;text/javascript&#34;</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;../script/jquery.min.js&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;text/javascript&#34;</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;../script/ao_module.js&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span></span></code></pre></div><p><em>Note that <strong>jquery must be imported before ao_module.js  AND ao_module must be imported with relative path to current script</strong> to make sure all the ao_module functions are usable.</em></p>
+<hr>
+<h2 id="float-window-apis">Float Window APIs</h2>
+<h3 id="global-variables">Global Variables</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">ao_module_virtualDesktop</span> <span class="c1">//boolean, true when the current app is running in web desktop mode
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="nx">ao_module_windowID</span> <span class="c1">//Window ID of the current app
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">ao_module_parentID</span> <span class="c1">//Parent window ID if this app window is created by another webapp
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">ao_module_callback</span> <span class="c1">//Callback function name (string) in parent
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">ao_module_ime</span> <span class="c1">//Set if this is an IME window, reserve for IME catergory WebApps only
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="nx">ao_root</span> <span class="c1">//Relative path to ArozOS web root, e.g. ../ 
+</span></span></span></code></pre></div><hr>
+<h3 id="windows-operations">Windows Operations</h3>
+<h4 id="-ao_module_newfwlaunchconfig">🔹 ao_module_newfw(launchConfig)</h4>
+<p>newfw create a new float windows with given launch configs.</p>
+<p>Most basic usage: (With auto assign UID, size and location)</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="nx">ao_module_newfw</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">url</span><span class="o">:</span> <span class="s2">&#34;Dummy/index.html&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">title</span><span class="o">:</span> <span class="s2">&#34;Dummy Module&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">appicon</span><span class="o">:</span> <span class="s2">&#34;Dummy/img/icon.png&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span></code></pre></div><p>Example usage that involve all configs.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="nx">ao_module_newfw</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">url</span><span class="o">:</span> <span class="s2">&#34;Dummy/index.html&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">uid</span><span class="o">:</span> <span class="s2">&#34;CustomUUID&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">width</span><span class="o">:</span> <span class="mi">1024</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">height</span><span class="o">:</span> <span class="mi">768</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">appicon</span><span class="o">:</span> <span class="s2">&#34;Dummy/img/icon.png&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">title</span><span class="o">:</span> <span class="s2">&#34;Dummy Module&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">left</span><span class="o">:</span> <span class="mi">100</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">top</span><span class="o">:</span> <span class="mi">100</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">background</span><span class="o">-</span><span class="nx">color</span><span class="o">:</span> <span class="s2">&#34;#fcfcfc&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">parent</span><span class="o">:</span> <span class="nx">ao_module_windowID</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">callback</span><span class="o">:</span> <span class="s2">&#34;childCallbackHandler&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span></code></pre></div><h5 id="note-about-parent-and-callback-values">Note about parent and callback values</h5>
+<p>The <code>parent</code> id must be set if <code>callback</code> is set.</p>
+<p><code>callback</code> is the name (string) of a global function in the parent float window that allow calling from its child. This won&rsquo;t work if the url is called from another origin that do not allow CORS access.</p>
+<h4 id="-ao_module_hasparentcallback">🔹 ao_module_hasParentCallback()</h4>
+<p>hasParentCallback return true or false depends on this windows has a set parent callback and its parent is still alive (the float window DOM object still exists)</p>
+<h4 id="-ao_module_parentcallbackdata">🔹 ao_module_parentCallback(data=&quot;&quot;)</h4>
+<p>parentCallback execute the parent callback from the child and return data to the parent float window. The data must be string. Use <code>JSON.stringify</code> if object data is needed to pass to the parent window.</p>
+<hr>
+<h3 id="windows-properties">Windows Properties</h3>
+<p>These are some global scope ao_module wrapper function where developer can call in their WebApp JavaScript sections to change the float window properties on the web desktop interface. When the API was called in non web-desktop mode, nothing will happens.</p>
+<h4 id="-ao_module_setfixedwindowsize">🔹 ao_module_setFixedWindowSize()</h4>
+<p>setFixedWindowSize set the float window to non-resizable window type. The maximize (and minimize) button will be hidden if this function is called when the webapp startup.</p>
+<h4 id="-ao_module_setresizablewindowsize">🔹 ao_module_setResizableWindowSize()</h4>
+<p>setResizableWindowSize set the float window to resizable window type. The maximize (and minimize) button will be shown. This is the default type of float window if <code>setFixedWindowSize()</code> was not called.</p>
+<h4 id="-ao_module_setwindowsizewidth-height">🔹 ao_module_setWindowSize(width, height)</h4>
+<p>setWindowSize force update the current float window to the target new size</p>
+<h4 id="-ao_module_setwindowtitlenewtitle">🔹 ao_module_setWindowTitle(newTitle)</h4>
+<p>setWindowTitle update the current float window to new title. Under non web-desktop mode, this function call update the <code>document.title</code> instead.</p>
+<h4 id="-ao_module_makesingleinstance">🔹 ao_module_makeSingleInstance()</h4>
+<p>makeSingleInstance is used to force only one instance of an WebApp is open at the same time. This function will check if there are any windows with the same path. If yes, overwrite the other window&rsquo;s hash content with the current window and close the current float window.</p>
+<p>If no another instance is found, this function return false and do nothing.</p>
+<h4 id="-ao_module_getinstancebypathmatchingpath">🔹 ao_module_getInstanceByPath(matchingPath)</h4>
+<p>getInstanceByPath get the first instance of float windows running in the current web desktop with the same path. Here is an example of usage.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kd">let</span> <span class="nx">targetOpeningInstance</span> <span class="o">=</span> <span class="nx">ao_module_getInstanceByPath</span><span class="p">(</span><span class="s2">&#34;NotepadA/index.html&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//Another float window (DOM objects) that also open to the same path
+</span></span></span></code></pre></div><p>This function return null if nothing is found.</p>
+<h4 id="-ao_module_close">🔹 ao_module_close()</h4>
+<p>close function close the current float window. However, you can also overwrite this function with your own checking logic and call to the underlaying api of <code>ao_module_closeHandler()</code>. Here is an example</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="c1">//In your WebApp front-end javascript, overwrite the ao_module_close function
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">ao_module_close</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="nx">checkDocumentSaved</span><span class="p">()){</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//Call to the underlaying fw closing API
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="nx">ao_module_closeHandler</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//Do something else and block closing action
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="nx">alert</span><span class="p">(</span><span class="s2">&#34;Please save the document before closing&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h4 id="-ao_module_closehandler">🔹 ao_module_closeHandler()</h4>
+<p>closeHandler is the underlaying API for <code>ao_module_close()</code>. Only use for overwriting the default <code>ao_module_close()</code> function.</p>
+<h4 id="-ao_module_focus">🔹 ao_module_focus()</h4>
+<p>focus will bring the current float window to top.</p>
+<h4 id="-ao_module_settopmost">🔹 ao_module_setTopMost()</h4>
+<p>setTopMost will bring the current float window to top and attach it in front of all other float windows.</p>
+<h4 id="-ao_module_unsettopmost">🔹 ao_module_unsetTopMost()</h4>
+<p>unsetTopMost will remove the current float window from the top-most layer and bring it back to the normal float windows layer.</p>
 
 </div>
 </div>

@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>🔸 http - Developers | ArozOS</title>
+  <title>Front-end Development - Developers | ArozOS</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
   <link rel="icon" href="https://aroz-online.github.io/ArozOS-Developers/favicon.png">
@@ -118,7 +118,7 @@
       <a href="https://aroz-online.github.io/ArozOS-Developers/docs/agi_resp/">Request &amp; Response</a>
     </li>
     
-    <li class="">
+    <li class="active ">
       <a href="https://aroz-online.github.io/ArozOS-Developers/docs/frontend/">Front-end Development</a>
     </li>
     
@@ -158,7 +158,7 @@
       <a href="https://aroz-online.github.io/ArozOS-Developers/docs/backend_imagelib/">🔸 imagelib</a>
     </li>
     
-    <li class="active ">
+    <li class="">
       <a href="https://aroz-online.github.io/ArozOS-Developers/docs/backend_http/">🔸 http</a>
     </li>
     
@@ -181,30 +181,9 @@
         </div>
         <div class="col-12 col-md-9">
           
-<h1 class="title">🔸 http</h1>
+<h1 class="title">Front-end Development</h1>
 <div class="content ">
-  <p>A basic http function group that allow GET / POST / HEAD / Download request to other web resources</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="c1">//Include the library
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">requirelib</span><span class="p">(</span><span class="s2">&#34;http&#34;</span><span class="p">);</span>
-</span></span></code></pre></div><h4 id="http-functions">http functions</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">http</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&#34;http://example.com/api/&#34;</span><span class="p">);</span> <span class="c1">//Create a get request, return the respond body
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
-</span></span><span class="line"><span class="cl"><span class="nx">http</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s2">&#34;http://localhost:8080/system/file_system/listDir&#34;</span><span class="p">,</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">dir</span><span class="o">:</span> <span class="s2">&#34;user:/Desktop&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">sort</span><span class="o">:</span> <span class="s2">&#34;default&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="p">}));</span>    <span class="c1">//Create a POST request with JSON payload
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
-</span></span><span class="line"><span class="cl"><span class="nx">http</span><span class="p">.</span><span class="nx">head</span><span class="p">(</span><span class="s2">&#34;http://localhost:8080/&#34;</span><span class="p">,</span> <span class="s2">&#34;Content-Type&#34;</span><span class="p">);</span> <span class="c1">//Get the header field &#34;Content-Type&#34; from the requested url, leave 2nd paramter empty to return the whole header in JSON string
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
-</span></span><span class="line"><span class="cl"><span class="nx">http</span><span class="p">.</span><span class="nx">download</span><span class="p">(</span><span class="s2">&#34;http://example.com/music.mp3&#34;</span><span class="p">,</span> <span class="s2">&#34;user:/Desktop&#34;</span><span class="p">,</span> <span class="s2">&#34;(Optional) My Music.mp3&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">//Since agi v2.0
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">http</span><span class="p">.</span><span class="nx">getb64</span><span class="p">(</span><span class="s2">&#34;http://example.com/photo.png&#34;</span><span class="p">);</span> <span class="c1">//Get target resources as base64 string, return null if error
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">http</span><span class="p">.</span><span class="nx">getCode</span><span class="p">(</span><span class="s2">&#34;http://redirect.example.com&#34;</span><span class="p">);</span> <span class="c1">//Get response code for the target endpoint,if the code is redirection related (e.g. 302), a new varaible &#34;_location&#34; will be created to store the redirection address in String.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
-</span></span><span class="line"><span class="cl"><span class="c1">//Since agi 2.3
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">http</span><span class="p">.</span><span class="nx">redirect</span><span class="p">(</span><span class="s2">&#34;https://example.com&#34;</span><span class="p">,</span> <span class="mi">307</span><span class="p">);</span> <span class="c1">//Redirect to target with status code
-</span></span></span></code></pre></div><h3 id="heading"></h3>
+  <p>Work In progress</p>
 
 </div>
 </div>

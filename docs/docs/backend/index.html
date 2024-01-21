@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>🔸 http - Developers | ArozOS</title>
+  <title>Backend Development - Developers | ArozOS</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
   <link rel="icon" href="https://aroz-online.github.io/ArozOS-Developers/favicon.png">
@@ -130,7 +130,7 @@
       <a href="https://aroz-online.github.io/ArozOS-Developers/docs/frontend_files/">🔹 File Selector &amp; File Passing</a>
     </li>
     
-    <li class="">
+    <li class="active ">
       <a href="https://aroz-online.github.io/ArozOS-Developers/docs/backend/">Backend Development</a>
     </li>
     
@@ -158,7 +158,7 @@
       <a href="https://aroz-online.github.io/ArozOS-Developers/docs/backend_imagelib/">🔸 imagelib</a>
     </li>
     
-    <li class="active ">
+    <li class="">
       <a href="https://aroz-online.github.io/ArozOS-Developers/docs/backend_http/">🔸 http</a>
     </li>
     
@@ -181,30 +181,23 @@
         </div>
         <div class="col-12 col-md-9">
           
-<h1 class="title">🔸 http</h1>
+<h1 class="title">Backend Development</h1>
 <div class="content ">
-  <p>A basic http function group that allow GET / POST / HEAD / Download request to other web resources</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="c1">//Include the library
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">requirelib</span><span class="p">(</span><span class="s2">&#34;http&#34;</span><span class="p">);</span>
-</span></span></code></pre></div><h4 id="http-functions">http functions</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">http</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&#34;http://example.com/api/&#34;</span><span class="p">);</span> <span class="c1">//Create a get request, return the respond body
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
-</span></span><span class="line"><span class="cl"><span class="nx">http</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s2">&#34;http://localhost:8080/system/file_system/listDir&#34;</span><span class="p">,</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">dir</span><span class="o">:</span> <span class="s2">&#34;user:/Desktop&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">sort</span><span class="o">:</span> <span class="s2">&#34;default&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="p">}));</span>    <span class="c1">//Create a POST request with JSON payload
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
-</span></span><span class="line"><span class="cl"><span class="nx">http</span><span class="p">.</span><span class="nx">head</span><span class="p">(</span><span class="s2">&#34;http://localhost:8080/&#34;</span><span class="p">,</span> <span class="s2">&#34;Content-Type&#34;</span><span class="p">);</span> <span class="c1">//Get the header field &#34;Content-Type&#34; from the requested url, leave 2nd paramter empty to return the whole header in JSON string
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
-</span></span><span class="line"><span class="cl"><span class="nx">http</span><span class="p">.</span><span class="nx">download</span><span class="p">(</span><span class="s2">&#34;http://example.com/music.mp3&#34;</span><span class="p">,</span> <span class="s2">&#34;user:/Desktop&#34;</span><span class="p">,</span> <span class="s2">&#34;(Optional) My Music.mp3&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">//Since agi v2.0
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">http</span><span class="p">.</span><span class="nx">getb64</span><span class="p">(</span><span class="s2">&#34;http://example.com/photo.png&#34;</span><span class="p">);</span> <span class="c1">//Get target resources as base64 string, return null if error
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">http</span><span class="p">.</span><span class="nx">getCode</span><span class="p">(</span><span class="s2">&#34;http://redirect.example.com&#34;</span><span class="p">);</span> <span class="c1">//Get response code for the target endpoint,if the code is redirection related (e.g. 302), a new varaible &#34;_location&#34; will be created to store the redirection address in String.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
-</span></span><span class="line"><span class="cl"><span class="c1">//Since agi 2.3
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">http</span><span class="p">.</span><span class="nx">redirect</span><span class="p">(</span><span class="s2">&#34;https://example.com&#34;</span><span class="p">,</span> <span class="mi">307</span><span class="p">);</span> <span class="c1">//Redirect to target with status code
-</span></span></span></code></pre></div><h3 id="heading"></h3>
+  <p>User scripting can be done in ArozOS using ArozOS Gateway Interface (agi).</p>
+<p>AGI interface documentations are labeled with prefix 🔸.</p>
+<h3 id="running-agi-scripts">Running .agi Scripts</h3>
+<p>To execute agi script (with file extension of .agi or .js), call to the ao_module.js wrapper&rsquo;s agi_run function. Here is a minimal example on how to call an agi script in front-end JavaScript code.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="nx">ao_module_agirun</span><span class="p">(</span><span class="s2">&#34;demo/backend/helloworld.js&#34;</span><span class="p">,</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">foo</span><span class="o">:</span> <span class="s2">&#34;bar&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">resp</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">alert</span><span class="p">(</span><span class="nx">resp</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span></code></pre></div><p>For more details about front-end back-end interaction, see <a href="../agi_resp/">Request &amp; Response</a></p>
+<h3 id="the-backend-folder">The backend Folder</h3>
+<p>As agi scripts can use both .js or .agi extension, when developing a backend for your WebApp, it is recommended that to put your scripts inside a folder named <code>backend</code>. For example, <code>web/MyModule/backend/myscript.js</code>.</p>
+<h3 id="debug-messages">Debug Messages</h3>
+<p>agi output its debug message back to the request origin.</p>
+<p>If you are requesting the script via agi RESTFUL API endpoints, then the error message will be output to the http response. Otherwise, sometime the error message will output to terminal. If you want to debug your code locally, you can also use the standard <code>console.log</code> to output your custom message to the terminal where you are running ArozOS executable.</p>
 
 </div>
 </div>

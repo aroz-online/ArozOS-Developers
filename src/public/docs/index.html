@@ -119,7 +119,7 @@
     </li>
     
     <li class="">
-      <a href="https://aroz-online.github.io/ArozOS-Developers/docs/frontend_intro/">Front-end Development</a>
+      <a href="https://aroz-online.github.io/ArozOS-Developers/docs/frontend/">Front-end Development</a>
     </li>
     
     <li class="">
@@ -131,7 +131,7 @@
     </li>
     
     <li class="">
-      <a href="https://aroz-online.github.io/ArozOS-Developers/docs/backend_intro/">Backend Development</a>
+      <a href="https://aroz-online.github.io/ArozOS-Developers/docs/backend/">Backend Development</a>
     </li>
     
     <li class="">
@@ -230,7 +230,7 @@ Request via ao_module wrapper (Recommended) You can import ao_module.js and use 
 
 <div class="summary mb-2">
   
-  <h2 class="title-summary"><a href="https://aroz-online.github.io/ArozOS-Developers/docs/frontend_intro/">Front-end Development</a></h2>
+  <h2 class="title-summary"><a href="https://aroz-online.github.io/ArozOS-Developers/docs/frontend/">Front-end Development</a></h2>
   <p>Work In progress</p>
 </div>
 
@@ -238,7 +238,8 @@ Request via ao_module wrapper (Recommended) You can import ao_module.js and use 
 <div class="summary mb-2">
   
   <h2 class="title-summary"><a href="https://aroz-online.github.io/ArozOS-Developers/docs/frontend_window-control/">🔹 Float-Windows API</a></h2>
-  <p>Work In progress</p>
+  <p>Requirements Float Windows (fw) are the draggable windows on the ArozOS web desktops that display the contents of WebApps. Float Windows properties can be controlled by the app front-end script using the ao_module.js api wrapper in the web/script/ folder. To use it, import the ao_module wrapper from your webapp html files.
+&lt;script type=&#34;text/javascript&#34; src=&#34;../script/jquery.min.js&#34;&gt;&lt;/script&gt; &lt;script type=&#34;text/javascript&#34; src=&#34;../script/ao_module.js&#34;&gt;&lt;/script&gt; Note that jquery must be imported before ao_module.js AND ao_module must be imported with relative path to current script to make sure all the ao_module functions are usable.</p>
 </div>
 
 
@@ -251,8 +252,11 @@ Request via ao_module wrapper (Recommended) You can import ao_module.js and use 
 
 <div class="summary mb-2">
   
-  <h2 class="title-summary"><a href="https://aroz-online.github.io/ArozOS-Developers/docs/backend_intro/">Backend Development</a></h2>
-  <p>Work In progress</p>
+  <h2 class="title-summary"><a href="https://aroz-online.github.io/ArozOS-Developers/docs/backend/">Backend Development</a></h2>
+  <p>User scripting can be done in ArozOS using ArozOS Gateway Interface (agi).
+AGI interface documentations are labeled with prefix 🔸.
+Running .agi Scripts To execute agi script (with file extension of .agi or .js), call to the ao_module.js wrapper&rsquo;s agi_run function. Here is a minimal example on how to call an agi script in front-end JavaScript code.
+ao_module_agirun(&#34;demo/backend/helloworld.js&#34;, { foo: &#34;bar&#34; }, function(resp){ alert(resp); }); For more details about front-end back-end interaction, see Request &amp; Response</p>
 </div>
 
 

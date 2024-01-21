@@ -38,9 +38,9 @@
     </item>
     <item>
       <title>Front-end Development</title>
-      <link>https://aroz-online.github.io/ArozOS-Developers/docs/frontend_intro/</link>
+      <link>https://aroz-online.github.io/ArozOS-Developers/docs/frontend/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://aroz-online.github.io/ArozOS-Developers/docs/frontend_intro/</guid>
+      <guid>https://aroz-online.github.io/ArozOS-Developers/docs/frontend/</guid>
       <description>Work In progress</description>
     </item>
     <item>
@@ -48,7 +48,7 @@
       <link>https://aroz-online.github.io/ArozOS-Developers/docs/frontend_window-control/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://aroz-online.github.io/ArozOS-Developers/docs/frontend_window-control/</guid>
-      <description>Work In progress</description>
+      <description>Requirements Float Windows (fw) are the draggable windows on the ArozOS web desktops that display the contents of WebApps. Float Windows properties can be controlled by the app front-end script using the ao_module.js api wrapper in the web/script/ folder. To use it, import the ao_module wrapper from your webapp html files.&#xA;&amp;lt;script type=&amp;#34;text/javascript&amp;#34; src=&amp;#34;../script/jquery.min.js&amp;#34;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script type=&amp;#34;text/javascript&amp;#34; src=&amp;#34;../script/ao_module.js&amp;#34;&amp;gt;&amp;lt;/script&amp;gt; Note that jquery must be imported before ao_module.js AND ao_module must be imported with relative path to current script to make sure all the ao_module functions are usable.</description>
     </item>
     <item>
       <title>🔹 File Selector &amp; File Passing</title>
@@ -59,10 +59,10 @@
     </item>
     <item>
       <title>Backend Development</title>
-      <link>https://aroz-online.github.io/ArozOS-Developers/docs/backend_intro/</link>
+      <link>https://aroz-online.github.io/ArozOS-Developers/docs/backend/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://aroz-online.github.io/ArozOS-Developers/docs/backend_intro/</guid>
-      <description>Work In progress</description>
+      <guid>https://aroz-online.github.io/ArozOS-Developers/docs/backend/</guid>
+      <description>User scripting can be done in ArozOS using ArozOS Gateway Interface (agi).&#xA;AGI interface documentations are labeled with prefix 🔸.&#xA;Running .agi Scripts To execute agi script (with file extension of .agi or .js), call to the ao_module.js wrapper&amp;rsquo;s agi_run function. Here is a minimal example on how to call an agi script in front-end JavaScript code.&#xA;ao_module_agirun(&amp;#34;demo/backend/helloworld.js&amp;#34;, { foo: &amp;#34;bar&amp;#34; }, function(resp){ alert(resp); }); For more details about front-end back-end interaction, see Request &amp;amp; Response</description>
     </item>
     <item>
       <title>🔸 system</title>
