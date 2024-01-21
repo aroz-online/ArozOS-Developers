@@ -1,0 +1,12 @@
+[
+    {
+        "name": "Github",
+        "link": "https://github.com/tobychui/arozos",
+        "image": "images/social/github.svg"
+    },
+    {
+        "name": "Telegram",
+        "link": "https://t.me/ArOZBeta",
+        "image": "images/social/telegram.svg"
+    }
+]

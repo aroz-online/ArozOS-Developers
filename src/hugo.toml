@@ -1,0 +1,60 @@
+baseURL = "https://aroz-online.github.io/ArozOS-Developers/"
+languageCode = 'en-us'
+title = 'Developers | ArozOS'
+
+pygmentsCodeFences = true
+pygmentsCodefencesGuessSyntax = true
+pygmentsUseClasses = true
+
+[module]
+  [module.hugoVersion]
+    extended = true
+    min = "0.55.0"
+
+# Controls how many words are printed in the content summary on the docs homepage.
+# See https://gohugo.io/content-management/summaries/
+summaryLength = 30
+
+[[menu.main]]
+    name = "Home"
+    url = "/"
+    weight = 1
+
+[[menu.main]]
+    name = "Docs"
+    url = "/docs/"
+    weight = 2
+	
+[[menu.main]]
+    name = "Source"
+    url = "https://github.com/tobychui/arozos"
+    weight = 3
+	
+[params]
+  google_analytics_id=""
+  homepage_button_link = './docs'
+  homepage_title = 'ArozOS Gateway Interface'
+  homepage_button_text = 'Read The Docs'
+  homepage_intro = 'AGI is a JavaScript based scripting language for ArozOS, designed for developing serverless or web applications with backend requirements'
+  homepage_image = './images/terminal.gif'
+
+  ## You can enable to add anchor links to header elements
+  # enable_anchor_link = true
+
+  [params.homepage_meta_tags]
+    meta_description = "WebApp Scripting Guide for ArozOS"
+    meta_og_title = "Backend Scripting API | ArozOS"
+    meta_og_type = "website"
+    meta_og_url = "https://doc.arozos.com"
+    meta_og_image = "https://doc.arozos.com/images/og.png"
+    meta_og_description = "WebApp Scripting Guide for ArozOS"
+    meta_twitter_card = "summary"
+    meta_twitter_site = ""
+    meta_twitter_creator = ""
+
+  [params.logo]
+      mobile = "images/logo-mobile.svg"
+      standard  = "images/logo.svg"
+
+  [params.footer]
+    copyright_text = 'CopyRight <a href="https://arozos.com">ArozOS</a> Project | Licensed under GPLv3'
