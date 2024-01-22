@@ -127,7 +127,7 @@
     </li>
     
     <li class="">
-      <a href="https://aroz-online.github.io/ArozOS-Developers/docs/frontend_files/">🔹 File Selector &amp; File Passing</a>
+      <a href="https://aroz-online.github.io/ArozOS-Developers/docs/frontend_files/">🔹 Select, Pass or Upload Files</a>
     </li>
     
     <li class="">
@@ -172,6 +172,14 @@
     
     <li class="">
       <a href="https://aroz-online.github.io/ArozOS-Developers/docs/backend_share/">🔸 share</a>
+    </li>
+    
+    <li class="">
+      <a href="https://aroz-online.github.io/ArozOS-Developers/docs/advance/">Advance Usage</a>
+    </li>
+    
+    <li class="">
+      <a href="https://aroz-online.github.io/ArozOS-Developers/docs/advance_tgbot/">◼️ Telegram Bot (Serverless)</a>
     </li>
     
   </ul>
@@ -222,7 +230,7 @@ Here is a minimal example of the init.agi file.
 <div class="summary mb-2">
   
   <h2 class="title-summary"><a href="https://aroz-online.github.io/ArozOS-Developers/docs/agi_resp/">Request &amp; Response</a></h2>
-  <p>Front-end 🡲 Backend (AGI) Request When requesting the AGI execution interface, you can post data with your request. ArozOS provides two way for front-end to request the AGI script placed in your ./web/ folder.
+  <p>Front-end → Backend (AGI) Request When requesting the AGI execution interface, you can post data with your request. ArozOS provides two way for front-end to request the AGI script placed in your ./web/ folder.
 Request via ao_module wrapper (Recommended) You can import ao_module.js and use the ao_module_agirun function call to execute a agi script. Here is an example.
 //index.html //Call to helloworld.js with timeout set to 3 seconds ao_module_agirun(&#34;demo/backend/helloworld.js&#34;, { foo: &#34;bar&#34; }, function(resp){ alert(resp); },function(){ alert(&#34;Oops.</p>
 </div>
@@ -245,8 +253,10 @@ Request via ao_module wrapper (Recommended) You can import ao_module.js and use 
 
 <div class="summary mb-2">
   
-  <h2 class="title-summary"><a href="https://aroz-online.github.io/ArozOS-Developers/docs/frontend_files/">🔹 File Selector &amp; File Passing</a></h2>
-  <p>Work In progress</p>
+  <h2 class="title-summary"><a href="https://aroz-online.github.io/ArozOS-Developers/docs/frontend_files/">🔹 Select, Pass or Upload Files</a></h2>
+  <p>Requirements Same as the use of Float-Window API, some of the functions involving ao_module wrapper will require the following library to be imported.
+&lt;script type=&#34;text/javascript&#34; src=&#34;../script/jquery.min.js&#34;&gt;&lt;/script&gt; &lt;script type=&#34;text/javascript&#34; src=&#34;../script/ao_module.js&#34;&gt;&lt;/script&gt; Note that jquery must be imported before ao_module.js AND ao_module must be imported with relative path to current script to make sure all the ao_module functions are usable.
+File Selector ArozOS has a build-in file selector which you can utilize in your WebApp as well as some utilities function to help you build a WebApp easily with file selection functions.</p>
 </div>
 
 
@@ -340,6 +350,21 @@ function getWSEndpoint(){ //Open opeartion in websocket let protocol = &#34;wss:
   <h2 class="title-summary"><a href="https://aroz-online.github.io/ArozOS-Developers/docs/backend_share/">🔸 share</a></h2>
   <p>The share API allow access to the ArozOS share interface and generate UUID based on the shared file.
 requirelib(&#34;share&#34;); share functions share.shareFile(&#34;user:/Desktop/test.pptx&#34;, 300); //File virtual path and timeout in seconds, return UUID of share share.getFileShareUUID(&#34;user:/Desktop/test.pptx&#34;); //Get the share UUID of a given file, return null if not shared share.fileIsShared(&#34;user:/Desktop/test.pptx&#34;); //Return true / false share.checkShareExists(shareUUID); //Return true / false share.checkSharePermission(shareUUID); //Return the share permission of shares (anyone / signedin / samegroup), return null if shareUUID invalid.</p>
+</div>
+
+
+<div class="summary mb-2">
+  
+  <h2 class="title-summary"><a href="https://aroz-online.github.io/ArozOS-Developers/docs/advance/">Advance Usage</a></h2>
+  <p>ArozOS with agi can be used to handle some advance use cases. Advance use case examples are labeled with prefix ◼️ .</p>
+</div>
+
+
+<div class="summary mb-2">
+  
+  <h2 class="title-summary"><a href="https://aroz-online.github.io/ArozOS-Developers/docs/advance_tgbot/">◼️ Telegram Bot (Serverless)</a></h2>
+  <p>agi when paired with serverless function, it can be used to handle external HTTP request like a webhook server does.
+Telegram Bot Telegram bot is one of the example in which serverless can be used to generate an integrative bot that works in telegram to automate some commands or sending stickers. Here is an example code for such usage. To use this, you will need to add this script to ARZ Serverless app and create an external request link for this script.</p>
 </div>
 
 

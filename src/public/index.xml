@@ -34,7 +34,7 @@
       <link>https://aroz-online.github.io/ArozOS-Developers/docs/agi_resp/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://aroz-online.github.io/ArozOS-Developers/docs/agi_resp/</guid>
-      <description>Front-end 🡲 Backend (AGI) Request When requesting the AGI execution interface, you can post data with your request. ArozOS provides two way for front-end to request the AGI script placed in your ./web/ folder.&#xA;Request via ao_module wrapper (Recommended) You can import ao_module.js and use the ao_module_agirun function call to execute a agi script. Here is an example.&#xA;//index.html //Call to helloworld.js with timeout set to 3 seconds ao_module_agirun(&amp;#34;demo/backend/helloworld.js&amp;#34;, { foo: &amp;#34;bar&amp;#34; }, function(resp){ alert(resp); },function(){ alert(&amp;#34;Oops.</description>
+      <description>Front-end → Backend (AGI) Request When requesting the AGI execution interface, you can post data with your request. ArozOS provides two way for front-end to request the AGI script placed in your ./web/ folder.&#xA;Request via ao_module wrapper (Recommended) You can import ao_module.js and use the ao_module_agirun function call to execute a agi script. Here is an example.&#xA;//index.html //Call to helloworld.js with timeout set to 3 seconds ao_module_agirun(&amp;#34;demo/backend/helloworld.js&amp;#34;, { foo: &amp;#34;bar&amp;#34; }, function(resp){ alert(resp); },function(){ alert(&amp;#34;Oops.</description>
     </item>
     <item>
       <title>Front-end Development</title>
@@ -51,11 +51,11 @@
       <description>Requirements Float Windows (fw) are the draggable windows on the ArozOS web desktops that display the contents of WebApps. Float Windows properties can be controlled by the app front-end script using the ao_module.js api wrapper in the web/script/ folder. To use it, import the ao_module wrapper from your webapp html files.&#xA;&amp;lt;script type=&amp;#34;text/javascript&amp;#34; src=&amp;#34;../script/jquery.min.js&amp;#34;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script type=&amp;#34;text/javascript&amp;#34; src=&amp;#34;../script/ao_module.js&amp;#34;&amp;gt;&amp;lt;/script&amp;gt; Note that jquery must be imported before ao_module.js AND ao_module must be imported with relative path to current script to make sure all the ao_module functions are usable.</description>
     </item>
     <item>
-      <title>🔹 File Selector &amp; File Passing</title>
+      <title>🔹 Select, Pass or Upload Files</title>
       <link>https://aroz-online.github.io/ArozOS-Developers/docs/frontend_files/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://aroz-online.github.io/ArozOS-Developers/docs/frontend_files/</guid>
-      <description>Work In progress</description>
+      <description>Requirements Same as the use of Float-Window API, some of the functions involving ao_module wrapper will require the following library to be imported.&#xA;&amp;lt;script type=&amp;#34;text/javascript&amp;#34; src=&amp;#34;../script/jquery.min.js&amp;#34;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script type=&amp;#34;text/javascript&amp;#34; src=&amp;#34;../script/ao_module.js&amp;#34;&amp;gt;&amp;lt;/script&amp;gt; Note that jquery must be imported before ao_module.js AND ao_module must be imported with relative path to current script to make sure all the ao_module functions are usable.&#xA;File Selector ArozOS has a build-in file selector which you can utilize in your WebApp as well as some utilities function to help you build a WebApp easily with file selection functions.</description>
     </item>
     <item>
       <title>Backend Development</title>
@@ -133,6 +133,20 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://aroz-online.github.io/ArozOS-Developers/docs/backend_share/</guid>
       <description>The share API allow access to the ArozOS share interface and generate UUID based on the shared file.&#xA;requirelib(&amp;#34;share&amp;#34;); share functions share.shareFile(&amp;#34;user:/Desktop/test.pptx&amp;#34;, 300); //File virtual path and timeout in seconds, return UUID of share share.getFileShareUUID(&amp;#34;user:/Desktop/test.pptx&amp;#34;); //Get the share UUID of a given file, return null if not shared share.fileIsShared(&amp;#34;user:/Desktop/test.pptx&amp;#34;); //Return true / false share.checkShareExists(shareUUID); //Return true / false share.checkSharePermission(shareUUID); //Return the share permission of shares (anyone / signedin / samegroup), return null if shareUUID invalid.</description>
+    </item>
+    <item>
+      <title>Advance Usage</title>
+      <link>https://aroz-online.github.io/ArozOS-Developers/docs/advance/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://aroz-online.github.io/ArozOS-Developers/docs/advance/</guid>
+      <description>ArozOS with agi can be used to handle some advance use cases. Advance use case examples are labeled with prefix ◼️ .</description>
+    </item>
+    <item>
+      <title>◼️ Telegram Bot (Serverless)</title>
+      <link>https://aroz-online.github.io/ArozOS-Developers/docs/advance_tgbot/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://aroz-online.github.io/ArozOS-Developers/docs/advance_tgbot/</guid>
+      <description>agi when paired with serverless function, it can be used to handle external HTTP request like a webhook server does.&#xA;Telegram Bot Telegram bot is one of the example in which serverless can be used to generate an integrative bot that works in telegram to automate some commands or sending stickers. Here is an example code for such usage. To use this, you will need to add this script to ARZ Serverless app and create an external request link for this script.</description>
     </item>
   </channel>
 </rss>

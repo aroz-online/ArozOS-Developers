@@ -42,9 +42,9 @@ newfw create a new float windows with given launch configs.
 Most basic usage: (With auto assign UID, size and location)
 ``` js
 ao_module_newfw({
-    url: "Dummy/index.html",
-    title: "Dummy Module",
-    appicon: "Dummy/img/icon.png"
+    "url": "Dummy/index.html",
+    "title": "Dummy Module",
+    "appicon": "Dummy/img/icon.png"
 });
 ```
 
@@ -52,17 +52,17 @@ Example usage that involve all configs.
 
 ```js
 ao_module_newfw({
-    url: "Dummy/index.html",
-    uid: "CustomUUID",
-    width: 1024,
-    height: 768,
-    appicon: "Dummy/img/icon.png",
-    title: "Dummy Module",
-    left: 100,
-    top: 100,
-    background-color: "#fcfcfc",
-    parent: ao_module_windowID,
-    callback: "childCallbackHandler"
+    "url": "Dummy/index.html",
+    "uid": "CustomUUID",
+    "width": 1024,
+    "height": 768,
+    "appicon": "Dummy/img/icon.png",
+    "title": "Dummy Module",
+    "left": 100,
+    "top": 100,
+    "background-color": "#fcfcfc",
+    "parent": ao_module_windowID,
+    "callback": "childCallbackHandler"
 });
 ```
 

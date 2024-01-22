@@ -4,7 +4,7 @@ weight: 5
 
 ---
 
-# Front-end 🡲 Backend (AGI) Request
+# Front-end → Backend (AGI) Request
 
 When requesting the AGI execution interface, you can post data with your request. ArozOS provides two way for front-end to request the AGI script placed in your ```./web/``` folder.
 
@@ -84,7 +84,7 @@ console.log(payload.foo); //Print out "bar" in terminal
 
 
 
-# Backend (AGI) 🡲 Front-end Response
+# Backend (AGI) → Front-end Response
 
 To send response to front-end, use either of the following at the end of your script.
 

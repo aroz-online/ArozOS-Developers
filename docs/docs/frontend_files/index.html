@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>🔹 File Selector &amp; File Passing - Developers | ArozOS</title>
+  <title>🔹 Select, Pass or Upload Files - Developers | ArozOS</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
   <link rel="icon" href="https://aroz-online.github.io/ArozOS-Developers/favicon.png">
@@ -127,7 +127,7 @@
     </li>
     
     <li class="active ">
-      <a href="https://aroz-online.github.io/ArozOS-Developers/docs/frontend_files/">🔹 File Selector &amp; File Passing</a>
+      <a href="https://aroz-online.github.io/ArozOS-Developers/docs/frontend_files/">🔹 Select, Pass or Upload Files</a>
     </li>
     
     <li class="">
@@ -174,6 +174,14 @@
       <a href="https://aroz-online.github.io/ArozOS-Developers/docs/backend_share/">🔸 share</a>
     </li>
     
+    <li class="">
+      <a href="https://aroz-online.github.io/ArozOS-Developers/docs/advance/">Advance Usage</a>
+    </li>
+    
+    <li class="">
+      <a href="https://aroz-online.github.io/ArozOS-Developers/docs/advance_tgbot/">◼️ Telegram Bot (Serverless)</a>
+    </li>
+    
   </ul>
 </div>
 
@@ -181,9 +189,269 @@
         </div>
         <div class="col-12 col-md-9">
           
-<h1 class="title">🔹 File Selector &amp; File Passing</h1>
+<h1 class="title">🔹 Select, Pass or Upload Files</h1>
 <div class="content ">
-  <p>Work In progress</p>
+  <h2 id="requirements">Requirements</h2>
+<p>Same as the use of Float-Window API, some of the functions involving ao_module wrapper will require the following library to be imported.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;text/javascript&#34;</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;../script/jquery.min.js&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;text/javascript&#34;</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;../script/ao_module.js&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span></span></code></pre></div><p><em>Note that <strong>jquery must be imported before ao_module.js  AND ao_module must be imported with relative path to current script</strong> to make sure all the ao_module functions are usable.</em></p>
+<hr>
+<h2 id="file-selector">File Selector</h2>
+<p>ArozOS has a build-in file selector which you can utilize in your WebApp as well as some utilities function to help you build a WebApp easily with file selection functions.</p>
+<h4 id="-ao_module_openfileselectorcallbackrootuser-typefileallowmultiplefalse-optionsundefined">🔹 ao_module_openFileSelector(callback,root=&ldquo;user:/&rdquo;, type=&ldquo;file&rdquo;,allowMultiple=false, options=undefined)</h4>
+<p>openFileSelector allow user to pick a file from their <strong>cloud virtual drives.</strong> Once this function is called, the cloud file selector will be shown in a new float window.</p>
+<p><img src="selector.png" alt=""></p>
+<h4 id="select-file-type">Select File Type</h4>
+<p>There are 4 supported file types which you can use in the <code>type</code> field</p>
+<table>
+<thead>
+<tr>
+<th>Type Key</th>
+<th>Selectable Items</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>file</td>
+<td>Files only</td>
+</tr>
+<tr>
+<td>folder</td>
+<td>Folders only</td>
+</tr>
+<tr>
+<td>all</td>
+<td>File or folder</td>
+</tr>
+<tr>
+<td>new</td>
+<td>Create new file, require options.defaultName to be filled</td>
+</tr>
+</tbody>
+</table>
+<p>Here is an example usage</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">//Options are optional values
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">let</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">defaultName</span><span class="o">:</span> <span class="s2">&#34;newfile.txt&#34;</span><span class="p">,</span>            <span class="c1">//Default filename used in new operation
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nx">fnameOverride</span><span class="o">:</span> <span class="s2">&#34;myfunction&#34;</span><span class="p">,</span>           <span class="c1">//For those defined with window.myfunction / or script with type=&#34;module&#34;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nx">filter</span><span class="o">:</span> <span class="p">[</span><span class="s2">&#34;mp3&#34;</span><span class="p">,</span><span class="s2">&#34;aac&#34;</span><span class="p">,</span><span class="s2">&#34;ogg&#34;</span><span class="p">,</span><span class="s2">&#34;flac&#34;</span><span class="p">,</span><span class="s2">&#34;wav&#34;</span><span class="p">]</span> <span class="c1">//File extension filter
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">//Handler function to process the selected files
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">function</span> <span class="nx">fileSelected</span><span class="p">(</span><span class="nx">filedata</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">filedata</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">var</span> <span class="nx">filename</span> <span class="o">=</span> <span class="nx">filedata</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">filename</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">var</span> <span class="nx">filepath</span> <span class="o">=</span> <span class="nx">filedata</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">filepath</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//Do something here with the selected file
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">//Call to the open file selector API
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">ao_module_openFileSelector</span><span class="p">(</span><span class="nx">fileSelected</span><span class="p">,</span> <span class="s2">&#34;user:/Desktop&#34;</span><span class="p">,</span> <span class="s2">&#34;file&#34;</span><span class="p">,</span> <span class="kc">true</span><span class="p">,</span> <span class="nx">options</span><span class="p">);</span>
+</span></span></code></pre></div><h4 id="-ao_module_selectfilescallback-filetypefile-accept-allowmultiplefalse">🔹 ao_module_selectFiles(callback, fileType=&ldquo;file&rdquo;, accept=&quot;*&quot;, allowMultiple=false)</h4>
+<p>selectFiles function allow user to pick a file from their <strong>local devices</strong>. This will create a native file selector that allow the user to pick a file from their computer. The function return a (list of) files.</p>
+<h2 id="file-locating">File Locating</h2>
+<h4 id="-ao_module_openpathpath-filenameundefined">🔹 ao_module_openPath(path, filename=undefined)</h4>
+<p>openPath allows WebApp to launch a new instance of File Manager and load a preset path. If filename was given, the target file will be highlighted in the File Manager.</p>
+<h2 id="file-passing">File Passing</h2>
+<p>File passing in ArozOS is done via hash values in URL. The hash value are encoded array of JSON object with filename and filepath properties. The encoding logic is shown in the example below.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="kd">let</span> <span class="nx">filedata</span> <span class="o">=</span> <span class="p">[{</span>
+</span></span><span class="line"><span class="cl">	<span class="s2">&#34;filename&#34;</span><span class="o">:</span> <span class="s2">&#34;test.jpg&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="s2">&#34;filepath&#34;</span><span class="o">:</span> <span class="s2">&#34;user:/Desktop/test.jpg&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}];</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">let</span> <span class="nx">fileHash</span> <span class="o">=</span>  <span class="nb">encodeURIComponent</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">filedata</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//WebApp embedded pages are requested with something like YourApp/embedded.html#{{fileHash_here}}
+</span></span></span></code></pre></div><h4 id="-ao_module_loadinputfiles">🔹 ao_module_loadInputFiles()</h4>
+<p>loadInputFiles return a list of files passed by other modules (mostly File Manager or Application Launcher). The returned value will have the identical structure as a standard ArozOS file passing file data. Here is an example of such structure.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">[</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nt">&#34;filename&#34;</span><span class="p">:</span> <span class="s2">&#34;test.jpg&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="nt">&#34;filepath&#34;</span><span class="p">:</span> <span class="s2">&#34;user:/Desktop/test.jpg&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">},</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nt">&#34;filename&#34;</span><span class="p">:</span> <span class="s2">&#34;test2.jpg&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="nt">&#34;filepath&#34;</span><span class="p">:</span> <span class="s2">&#34;user:/Desktop/test2.jpg&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">]</span><span class="err">;</span>
+</span></span></code></pre></div><p><em>If there are no file passing hash found, the function return <code>null</code>.</em></p>
+<h2 id="file-upload">File Upload</h2>
+<p>File upload in ArozOS is a bit complex as ArozOS is designed to support low end devices with little hardware resources. If possible, please try to avoid handling uploading large files in your WebApp and use the File Manager instead.</p>
+<h4 id="-ao_module_uploadfilefile-targetpath-callbackundefined-progresscallbackundefined-failedcallbackundefined">🔹 ao_module_uploadFile(file, targetPath, callback=undefined, progressCallback=undefined, failedcallback=undefined)</h4>
+<p>uploadFile handle small files upload using xhr requests.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Usage</th>
+<th>Example / Return Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>file</td>
+<td>The file object to upload (type <strong><code>File</code></strong>)</td>
+<td></td>
+</tr>
+<tr>
+<td>targetPath</td>
+<td>The target virtual path for uploading this file</td>
+<td><code>user:/Desktop/</code></td>
+</tr>
+<tr>
+<td>callback</td>
+<td>Callback function on upload completed</td>
+<td>Return the upload target response, usually &ldquo;ok&rdquo;</td>
+</tr>
+<tr>
+<td>progressCallback</td>
+<td>Callback function on progress change</td>
+<td><code>function displayProgress(completePercentage){console.log(completePercentage + &quot;% uploaded&quot;)}</code></td>
+</tr>
+<tr>
+<td>failedcallback</td>
+<td>Callback function on upload failed</td>
+<td>Return status code of xhr request</td>
+</tr>
+</tbody>
+</table>
+<h4 id="websocket-upload--low-memory-upload-mode-not-recommend">WebSocket Upload / Low Memory Upload Mode (NOT RECOMMEND)</h4>
+<p><em>It is generally <strong>not recommend your WebApp to handle any kind of large file upload</strong> as this might effect system stability when using with low power hardware. However, if you have specific use case, it is still possible for developers to develop a system that allow files larger than RAM size to be uploaded.</em></p>
+<p>When a large file is required to upload through your WebApp, you can use the websocket upload method. The steps for uploading via websocket works as followings.</p>
+<ol>
+<li>Open a WebSocket connection</li>
+<li>Upload one chunk of the selected file</li>
+<li>Wait for server write and return &ldquo;next&rdquo;</li>
+<li>Repeat step 2 until all file chunks are uploaded</li>
+<li>Send &ldquo;done&rdquo; to server</li>
+<li>Wait for server to merge the file and reply &ldquo;ok&rdquo;</li>
+<li>Close the connection with success message</li>
+</ol>
+<p>You can make a websocket request to <code>/system/file_system/lowmemUpload</code> and upload chunks of files in sequence. Here is an example code for details implementation.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="cm">/*
+</span></span></span><span class="line"><span class="cl"><span class="cm">	Low Memory Upload Mode
+</span></span></span><span class="line"><span class="cl"><span class="cm">	
+</span></span></span><span class="line"><span class="cl"><span class="cm">	Assume the file you want to upload is stored in &#34;file&#34; object
+</span></span></span><span class="line"><span class="cl"><span class="cm">*/</span>
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">uploadFileChunkSize</span> <span class="o">=</span> <span class="mi">1024</span> <span class="o">*</span> <span class="mi">512</span><span class="p">;</span> <span class="c1">//512KB per chunk in low memory upload
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">var</span> <span class="nx">largeFileCutoffSize</span> <span class="o">=</span> <span class="mi">8192</span> <span class="o">*</span> <span class="mi">1024</span> <span class="o">*</span> <span class="mi">1024</span><span class="p">;</span> <span class="c1">//Any file larger than this size is consider &#34;large file&#34;, default to 8GB
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">filename</span> <span class="o">=</span> <span class="nb">encodeURIComponent</span><span class="p">(</span><span class="nx">file</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">filesize</span> <span class="o">=</span> <span class="nx">file</span><span class="p">.</span><span class="nx">size</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">//Open the websocket
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">let</span> <span class="nx">path</span> <span class="o">=</span> <span class="s2">&#34;user:/Desktop&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kd">let</span> <span class="nx">protocol</span> <span class="o">=</span> <span class="s2">&#34;wss://&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="p">(</span><span class="nx">location</span><span class="p">.</span><span class="nx">protocol</span> <span class="o">!==</span> <span class="s1">&#39;https:&#39;</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">protocol</span> <span class="o">=</span> <span class="s2">&#34;ws://&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">port</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">port</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">port</span> <span class="o">==</span> <span class="s2">&#34;&#34;</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="p">(</span><span class="nx">location</span><span class="p">.</span><span class="nx">protocol</span> <span class="o">!==</span> <span class="s1">&#39;https:&#39;</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">port</span> <span class="o">=</span> <span class="s2">&#34;80&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">port</span> <span class="o">=</span> <span class="s2">&#34;443&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">let</span> <span class="nx">uploadDir</span> <span class="o">=</span> <span class="s2">&#34;user:/Desktop&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">//Fixing Firefox path issues on or above FF48.0
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">if</span> <span class="p">(</span><span class="nx">isFirefox</span> <span class="o">&amp;&amp;</span> <span class="nx">file</span><span class="p">.</span><span class="nx">webkitRelativePath</span> <span class="o">!=</span> <span class="s2">&#34;&#34;</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">//Use the webkitRelativePath instead of the name, this is a folder upload
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="kd">let</span> <span class="nx">pathinfo</span> <span class="o">=</span> <span class="nx">file</span><span class="p">.</span><span class="nx">webkitRelativePath</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s2">&#34;/&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">pathinfo</span><span class="p">.</span><span class="nx">pop</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">	<span class="kd">let</span> <span class="nx">subpath</span> <span class="o">=</span> <span class="nx">pathinfo</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="s2">&#34;/&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">uploadDir</span> <span class="o">=</span> <span class="nx">uploadDir</span> <span class="o">+</span> <span class="nx">subpath</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">let</span> <span class="nx">hugeFileMode</span> <span class="o">=</span> <span class="s2">&#34;&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="p">(</span><span class="nx">file</span><span class="p">.</span><span class="nx">size</span> <span class="o">&gt;</span> <span class="nx">largeFileCutoffSize</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">//Filesize over cutoff line. Use huge file mode
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">hugeFileMode</span> <span class="o">=</span> <span class="s2">&#34;&amp;hugefile=true&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">let</span> <span class="nx">socket</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WebSocket</span><span class="p">(</span><span class="nx">protocol</span> <span class="o">+</span> <span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">hostname</span> <span class="o">+</span> <span class="s2">&#34;:&#34;</span> <span class="o">+</span> <span class="nx">port</span> <span class="o">+</span> <span class="s2">&#34;/system/file_system/lowmemUpload?filename=&#34;</span> <span class="o">+</span> <span class="nx">filename</span> <span class="o">+</span> <span class="s2">&#34;&amp;path=&#34;</span> <span class="o">+</span> <span class="nx">uploadDir</span> <span class="o">+</span> <span class="nx">hugeFileMode</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="kd">let</span> <span class="nx">currentSendingIndex</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kd">let</span> <span class="nx">chunks</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">ceil</span><span class="p">(</span><span class="nx">file</span><span class="p">.</span><span class="nx">size</span> <span class="o">/</span> <span class="nx">uploadFileChunkSize</span><span class="p">,</span> <span class="nx">uploadFileChunkSize</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">//Define a function for sending a particular chunk
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">function</span> <span class="nx">sendChunk</span><span class="p">(</span><span class="nx">id</span><span class="p">,</span> <span class="nx">uploadingIconUUID</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="kd">let</span> <span class="nx">offsetStart</span> <span class="o">=</span> <span class="nx">id</span> <span class="o">*</span> <span class="nx">uploadFileChunkSize</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="kd">let</span> <span class="nx">offsetEnd</span> <span class="o">=</span> <span class="nx">id</span> <span class="o">*</span> <span class="nx">uploadFileChunkSize</span> <span class="o">+</span> <span class="nx">uploadFileChunkSize</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="kd">let</span> <span class="nx">thisblob</span> <span class="o">=</span> <span class="nx">file</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="nx">offsetStart</span><span class="p">,</span> <span class="nx">offsetEnd</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">socket</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">thisblob</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">//Update progress to first percentage
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="kd">let</span> <span class="nx">progress</span> <span class="o">=</span> <span class="nx">id</span> <span class="o">/</span> <span class="p">(</span><span class="nx">chunks</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mf">100.0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="p">(</span><span class="nx">progress</span> <span class="o">&gt;</span> <span class="mi">100</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">progress</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;Uploading &#34;</span> <span class="o">+</span> <span class="nx">progress</span> <span class="o">+</span> <span class="s2">&#34;%&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">//Start sending
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">socket</span><span class="p">.</span><span class="nx">onopen</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">//Send the first chunk
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">sendChunk</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nx">uploadingIconUUID</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">currentSendingIndex</span><span class="o">++</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">socket</span><span class="p">.</span><span class="nx">onmessage</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">//Append to the send index
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="kd">var</span> <span class="nx">incomingValue</span> <span class="o">=</span> <span class="nx">event</span><span class="p">.</span><span class="nx">data</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="p">(</span><span class="nx">incomingValue</span> <span class="o">==</span> <span class="s2">&#34;next&#34;</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="k">if</span> <span class="p">(</span><span class="nx">currentSendingIndex</span> <span class="o">==</span> <span class="nx">chunks</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">			<span class="c1">//Already finished
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="nx">socket</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s2">&#34;done&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">		<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">			<span class="c1">//Send next chunk
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="nx">sendChunk</span><span class="p">(</span><span class="nx">currentSendingIndex</span><span class="p">,</span> <span class="nx">uploadingIconUUID</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">			<span class="nx">currentSendingIndex</span><span class="o">++</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">incomingValue</span> <span class="o">==</span> <span class="s2">&#34;OK&#34;</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="c1">//Merge completed
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="c1">//Try to parse it as JSON
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="k">try</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">			<span class="kd">var</span> <span class="nx">resp</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">incomingValue</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s1">&#39;\\&#39;</span> <span class="o">+</span> <span class="s1">&#39;&#34;&#39;</span><span class="p">).</span><span class="nx">join</span><span class="p">(</span><span class="s2">&#34;\&#34;&#34;</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">			<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">resp</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">			<span class="k">if</span> <span class="p">(</span><span class="nx">resp</span><span class="p">.</span><span class="nx">error</span> <span class="o">!==</span> <span class="kc">undefined</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">				<span class="c1">//This is an error message
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>				<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;Upload Failed&#34;</span><span class="p">,</span> <span class="nx">resp</span><span class="p">.</span><span class="nx">error</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">			<span class="p">}</span>
+</span></span><span class="line"><span class="cl">		<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">ex</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">			<span class="c1">//Something else
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">incomingValue</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">			<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">ex</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">		<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">socket</span><span class="p">.</span><span class="nx">onclose</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">//Upload completed
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nx">alert</span><span class="p">(</span><span class="s2">&#34;upload completed&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">socket</span><span class="p">.</span><span class="nx">onerror</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">.</span><span class="nx">message</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">//Do something to handle the upload fail
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">};</span>
+</span></span></code></pre></div><h2 id="deprecated">Deprecated</h2>
+<p><code>ao_module_codec</code> was used during the ArOZ Online Beta (AOB) era to handle cross frame unicode file passing issues. If you are trying to migrate a module from AOB to ArozOS, please remove all of the usages of these functions.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="nx">ao_module_codec</span><span class="p">.</span><span class="nx">decodeUmFilename</span><span class="p">(</span><span class="nx">umfilename_here</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nx">ao_module_codec</span><span class="p">.</span><span class="nx">encodeUMFilename</span><span class="p">(</span><span class="s2">&#34;test.stl&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nx">ao_module_codec</span><span class="p">.</span><span class="nx">decodeHexFoldername</span><span class="p">(</span><span class="nx">hexFolderName_here</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nx">ao_module_codec</span><span class="p">.</span><span class="nx">encodeHexFoldername</span><span class="p">(</span><span class="s2">&#34;test&#34;</span><span class="p">);</span>
+</span></span></code></pre></div><p><em>From ArozOS v1.0 onward, the core was developed with UTF-8 support. Hence, these functions are no longer required.</em></p>
 
 </div>
 </div>
