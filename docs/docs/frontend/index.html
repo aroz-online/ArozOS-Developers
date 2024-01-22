@@ -186,6 +186,10 @@
       <a href="https://aroz-online.github.io/ArozOS-Developers/docs/advance_tgbot/">◼️ Telegram Bot (Serverless)</a>
     </li>
     
+    <li class="">
+      <a href="https://aroz-online.github.io/ArozOS-Developers/docs/advance_user-space-exec/">◼️ User Space Exec (Serverless)</a>
+    </li>
+    
   </ul>
 </div>
 
@@ -195,7 +199,24 @@
           
 <h1 class="title">Front-end Development</h1>
 <div class="content ">
-  <p>Work In progress</p>
+  <p>Front-end development in ArozOS is no different from normal WebApp development.</p>
+<h2 id="basics-of-arozos-webapp">Basics of ArozOS WebApp</h2>
+<p>ArozOS can be accessed via many different ways. The most noticeable one of course is the web desktop interface. Here is a list of possible access mode of any WebApp installed on ArozOS</p>
+<ul>
+<li>Web Desktop Mode (float windows)</li>
+<li>Mobile Desktop Mode (Vertical full screen float windows)</li>
+<li>Standalone mode (Normal website like)</li>
+<li>PWA Mode (Android devices only)</li>
+</ul>
+<p>The front-end API works on the web desktop and mobile desktop mode, while providing limited support to standalone and PWA mode users.</p>
+<p>If your functions only require basic web hosting to work  (e.g. static website with all client side processing, like a web calculator) , then you can just import your WebApp into ArozOS and add an <code>init.agi</code> file. See <a href="../init-agi/">init.agi</a> for more information.</p>
+<h3 id="design-style">Design Style</h3>
+<p>The default css used for ArozOS is the Semantic UI css framework. However, you can also pick forked projects of semantics like the <a href="https://fomantic-ui.com/">Fomantic</a> or <a href="https://v2.tocas-ui.com/">Tocas UI v2</a>.</p>
+<h3 id="use-of-cdns">Use of CDNs</h3>
+<p><strong>DO NOT USE CDN LINKS IN AROZOS!!!</strong></p>
+<p><strong>DO NOT USE CDN LINKS IN AROZOS!!!</strong></p>
+<p><strong>DO NOT USE CDN LINKS IN AROZOS!!!</strong></p>
+<p>ArozOS is designed to run completely off-grid. If special css or scripts are needed, download them from the source or CDN (remember to trace the internal imported scripts as well) and put them in a local folder within your WebApp&rsquo;s root directory.</p>
 
 </div>
 </div>

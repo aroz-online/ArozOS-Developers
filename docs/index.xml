@@ -41,7 +41,7 @@
       <link>https://aroz-online.github.io/ArozOS-Developers/docs/frontend/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://aroz-online.github.io/ArozOS-Developers/docs/frontend/</guid>
-      <description>Work In progress</description>
+      <description>Front-end development in ArozOS is no different from normal WebApp development.&#xA;Basics of ArozOS WebApp ArozOS can be accessed via many different ways. The most noticeable one of course is the web desktop interface. Here is a list of possible access mode of any WebApp installed on ArozOS&#xA;Web Desktop Mode (float windows) Mobile Desktop Mode (Vertical full screen float windows) Standalone mode (Normal website like) PWA Mode (Android devices only) The front-end API works on the web desktop and mobile desktop mode, while providing limited support to standalone and PWA mode users.</description>
     </item>
     <item>
       <title>🔹 Float-Windows API</title>
@@ -154,6 +154,13 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://aroz-online.github.io/ArozOS-Developers/docs/advance_tgbot/</guid>
       <description>agi when paired with serverless function, it can be used to handle external HTTP request like a webhook server does.&#xA;Telegram Bot Telegram bot is one of the example in which serverless can be used to generate an integrative bot that works in telegram to automate some commands or sending stickers. Here is an example code for such usage. To use this, you will need to add this script to ARZ Serverless app and create an external request link for this script.</description>
+    </item>
+    <item>
+      <title>◼️ User Space Exec (Serverless)</title>
+      <link>https://aroz-online.github.io/ArozOS-Developers/docs/advance_user-space-exec/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://aroz-online.github.io/ArozOS-Developers/docs/advance_user-space-exec/</guid>
+      <description>When an agi script is executed in user serverless scope, developer can utilize the filelib with JavaScript build in eval() function to make some fun use of dynamic script importing.&#xA;Import and Execution in User Space Here is an example of importing moment.min.js and execute it in user space.&#xA;requirelib(&amp;#34;filelib&amp;#34;); var momentLib = filelib.readFile(&amp;#34;user:/moment.min.js&amp;#34;); eval(momentLib); Note that when paired with the http library, this might cause some security issues. That is why the ARZ Serverless app will remind you not to include untrusted script into the library to prevent any illegal access or attack from happening to your server.</description>
     </item>
   </channel>
 </rss>
