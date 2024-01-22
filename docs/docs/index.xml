@@ -58,6 +58,13 @@
       <description>Requirements Same as the use of Float-Window API, some of the functions involving ao_module wrapper will require the following library to be imported.&#xA;&amp;lt;script type=&amp;#34;text/javascript&amp;#34; src=&amp;#34;../script/jquery.min.js&amp;#34;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script type=&amp;#34;text/javascript&amp;#34; src=&amp;#34;../script/ao_module.js&amp;#34;&amp;gt;&amp;lt;/script&amp;gt; Note that jquery must be imported before ao_module.js AND ao_module must be imported with relative path to current script to make sure all the ao_module functions are usable.&#xA;File Selector ArozOS has a build-in file selector which you can utilize in your WebApp as well as some utilities function to help you build a WebApp easily with file selection functions.</description>
     </item>
     <item>
+      <title>🔹 Requesting Media Stream</title>
+      <link>https://aroz-online.github.io/ArozOS-Developers/docs/frontend_media/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://aroz-online.github.io/ArozOS-Developers/docs/frontend_media/</guid>
+      <description>WebApp can request any files from the user accessible storage scope by making a HTTP request to the media endpoint. If you need backend processing after reading the file, use the filelib API instead.&#xA;Media Stream Request To get a stream of media file from the server using virtual path, make a HTTP request to /media/ endpoint with ?file={{path}} GET parameter. Here is an example.&#xA;GET /media?file=user:/Desktop/music.mp3 By default the header do not include Content-Disposition or Content-Type header.</description>
+    </item>
+    <item>
       <title>Backend Development</title>
       <link>https://aroz-online.github.io/ArozOS-Developers/docs/backend/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
