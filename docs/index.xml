@@ -62,7 +62,14 @@
       <link>https://aroz-online.github.io/ArozOS-Developers/docs/frontend_media/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://aroz-online.github.io/ArozOS-Developers/docs/frontend_media/</guid>
-      <description>WebApp can request any files from the user accessible storage scope by making a HTTP request to the media endpoint. If you need backend processing after reading the file, use the filelib API instead.&#xA;Media Stream Request To get a stream of media file from the server using virtual path, make a HTTP request to /media/ endpoint with ?file={{path}} GET parameter. Here is an example.&#xA;GET /media?file=user:/Desktop/music.mp3 By default the header do not include Content-Disposition or Content-Type header.</description>
+      <description>WebApp can request any files from the user accessible storage scope by making a HTTP request to the media endpoint. If you need backend processing after reading the file, use the filelib API instead.&#xA;Media Stream Request To get a stream of media file from the server using virtual path, make a HTTP request to /media/ endpoint with ?file={{path}} GET parameter. Here is an example.&#xA;GET /media?file=user:/Desktop/music.mp3 By default the header do not include Content-Disposition or Content-Type.</description>
+    </item>
+    <item>
+      <title>🔹 ao_module utilities</title>
+      <link>https://aroz-online.github.io/ArozOS-Developers/docs/frontend_aomodule-utils/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://aroz-online.github.io/ArozOS-Developers/docs/frontend_aomodule-utils/</guid>
+      <description>ao_module provide a list of utilities function which you can use to make developing WebApps easier.&#xA;Usage To use the utilities functions, your fist need to import the ao_module wrapper as follows.&#xA;&amp;lt;script type=&amp;#34;text/javascript&amp;#34; src=&amp;#34;../script/jquery.min.js&amp;#34;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script type=&amp;#34;text/javascript&amp;#34; src=&amp;#34;../script/ao_module.js&amp;#34;&amp;gt;&amp;lt;/script&amp;gt; And call them with the static class name ao_module_utils. For example,&#xA;let newUUID = ao_module_utils.getRandomUID(); //Return a random UUID from timestamp Objects Encoding objectToAttr(object) Convert objects into a DOM attribute safe string</description>
     </item>
     <item>
       <title>Backend Development</title>

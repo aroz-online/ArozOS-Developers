@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>Backend Development - Developers | ArozOS</title>
+  <title>🔹 ao_module utilities - Developers | ArozOS</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
   <link rel="icon" href="https://aroz-online.github.io/ArozOS-Developers/favicon.png">
@@ -134,11 +134,11 @@
       <a href="https://aroz-online.github.io/ArozOS-Developers/docs/frontend_media/">🔹 Requesting Media Stream</a>
     </li>
     
-    <li class="">
+    <li class="active ">
       <a href="https://aroz-online.github.io/ArozOS-Developers/docs/frontend_aomodule-utils/">🔹 ao_module utilities</a>
     </li>
     
-    <li class="active ">
+    <li class="">
       <a href="https://aroz-online.github.io/ArozOS-Developers/docs/backend/">Backend Development</a>
     </li>
     
@@ -201,24 +201,52 @@
         </div>
         <div class="col-12 col-md-9">
           
-<h1 class="title">Backend Development</h1>
+<h1 class="title">🔹 ao_module utilities</h1>
 <div class="content ">
-  <p>User scripting can be done in ArozOS using ArozOS Gateway Interface (agi).</p>
-<p>AGI interface documentations are labeled with prefix 🔸.</p>
-<h3 id="running-agi-scripts">Running .agi Scripts</h3>
-<p>To execute agi script (with file extension of .agi or .js), call to the ao_module.js wrapper&rsquo;s agi_run function. Here is a minimal example on how to call an agi script in front-end JavaScript code.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="nx">ao_module_agirun</span><span class="p">(</span><span class="s2">&#34;demo/backend/helloworld.js&#34;</span><span class="p">,</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">foo</span><span class="o">:</span> <span class="s2">&#34;bar&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">resp</span><span class="p">){</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">alert</span><span class="p">(</span><span class="nx">resp</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl"><span class="p">});</span>
-</span></span></code></pre></div><p>For more details about front-end back-end interaction, see <a href="../agi_resp/">Request &amp; Response</a></p>
-<h3 id="the-backend-folder">The backend Folder</h3>
-<p>As agi scripts can use both .js or .agi extension, when developing a backend for your WebApp, it is recommended that to put your scripts inside a folder named <code>backend</code>. For example, <code>web/MyModule/backend/myscript.js</code>.</p>
-<h3 id="debug-messages">Debug Messages</h3>
-<p>agi output its debug message back to the request origin.</p>
-<p>If you are requesting the script via agi RESTFUL API endpoints, then the error message will be output to the http response. Otherwise, sometime the error message will output to terminal. If you want to debug your code locally, you can also use the standard <code>console.log</code> to output your custom message to the terminal where you are running ArozOS executable.</p>
-
+  <p>ao_module provide a list of utilities function which you can use to make developing WebApps easier.</p>
+<h2 id="usage">Usage</h2>
+<p>To use the utilities functions, your fist need to import the ao_module wrapper as follows.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;text/javascript&#34;</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;../script/jquery.min.js&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;text/javascript&#34;</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;../script/ao_module.js&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span></span></code></pre></div><p>And call them with the static class name <code>ao_module_utils</code>. For example,</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="kd">let</span> <span class="nx">newUUID</span> <span class="o">=</span> <span class="nx">ao_module_utils</span><span class="p">.</span><span class="nx">getRandomUID</span><span class="p">();</span> <span class="c1">//Return a random UUID from timestamp
+</span></span></span></code></pre></div><h2 id="objects-encoding">Objects Encoding</h2>
+<h3 id="objecttoattrobject">objectToAttr(object)</h3>
+<p>Convert objects into a DOM attribute safe string</p>
+<h3 id="attrtoobjectattr">attrToObject(attr)</h3>
+<p>Convert the DOM attribute string back to a JavaScript object</p>
+<h3 id="stringtoblobtext-mimetypetextplain">stringToBlob(text, mimetype=&ldquo;text/plain&rdquo;)</h3>
+<p>Convert string to blob object</p>
+<h3 id="blobtofileblob-filename-mimetypetextplain">blobToFile(blob, filename, mimetype=&ldquo;text/plain&rdquo;)</h3>
+<p>Convert blob to File object.</p>
+<h2 id="file-utilities">File Utilities</h2>
+<h3 id="readfilefromfileobjectfileobject-successcallback-failedcallbackundefined">readFileFromFileObject(fileObject, successCallback, failedCallback=undefined)</h3>
+<p>Read file object as text. Success callback will return the content of the file as string, while failed callback will return the reader error DOMException.</p>
+<h3 id="getdropfileinfodropevent">getDropFileInfo(dropEvent)</h3>
+<p>Get the drop file properties <code>{filepath: file_virtual_path, filename: file_name}</code> from file drop events from File Manager. Return <code>null</code> if this is not a drop event from File Manager</p>
+<h3 id="geticonfromextext">getIconFromExt(ext)</h3>
+<p>Return Semantic UI supported icon class name (without the icon class) as string from given file extension. For example</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="kd">let</span> <span class="nx">fileExt</span> <span class="o">=</span> <span class="s2">&#34;pdf&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kd">let</span> <span class="nx">iconElement</span> <span class="o">=</span> <span class="sb">`&lt;i class=&#34;</span><span class="si">${</span><span class="nx">ao_module_utils</span><span class="p">.</span><span class="nx">getIconFromExt</span><span class="p">(</span><span class="nx">fileExt</span><span class="p">)</span><span class="si">}</span><span class="sb"> icon&#34;&gt;&lt;/i&gt;`</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">//The icon element class will be &#34;file pdf outline icon&#34;
+</span></span></span></code></pre></div><h3 id="formatbytesbytes-decimalplace2">formatBytes(bytes, decimalPlace=2)</h3>
+<p>Convert and rounds bytes into KB, MB, GB, TB up to YB (probably not need this anytime soon)</p>
+<h2 id="others">Others</h2>
+<h3 id="getrandomuid">getRandomUID()</h3>
+<p>Get a random UUID base on current timestamp</p>
+<h3 id="durationconverterseconds">durationConverter(seconds)</h3>
+<p>Convert duration in seconds to Days / Hours / Minutes / Seconds</p>
+<h3 id="timeconverterunix_timestamp">timeConverter(unix_timestamp);</h3>
+<p>Get human readable timestamp from unix timestamp</p>
+<h3 id="getwebsocketendpoint">getWebSocketEndpoint()</h3>
+<p>Construct server websocket endpoint root from current client accessing URL. The URL is constrcuted on the front-end so it will use the hostname from where the client is connecting into the system as the root url for websocket connection. Here is an example if the user is connecting in via HTTP from LAN.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">ws://192.168.1.100:8080
+</span></span></code></pre></div><p>And here is another example user is connecting into your server via HTTPS domain</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">wss://example.com
+</span></span></code></pre></div><p>You can add your scripts relative path to it and create a websocket connection. Here is an example.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="kd">let</span> <span class="nx">wsurl</span> <span class="o">=</span> <span class="nx">ao_module_utils</span><span class="p">.</span><span class="nx">getWebSocketEndpoint</span><span class="p">()</span> <span class="o">+</span> <span class="s2">&#34;/MyModule/backend/connect.agi&#34;</span><span class="p">;</span>
+</span></span></code></pre></div>
 </div>
 </div>
 

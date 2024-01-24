@@ -135,6 +135,10 @@
     </li>
     
     <li class="">
+      <a href="https://aroz-online.github.io/ArozOS-Developers/docs/frontend_aomodule-utils/">🔹 ao_module utilities</a>
+    </li>
+    
+    <li class="">
       <a href="https://aroz-online.github.io/ArozOS-Developers/docs/backend/">Backend Development</a>
     </li>
     
@@ -275,7 +279,17 @@ File Selector ArozOS has a build-in file selector which you can utilize in your 
   <h2 class="title-summary"><a href="https://aroz-online.github.io/ArozOS-Developers/docs/frontend_media/">🔹 Requesting Media Stream</a></h2>
   <p>WebApp can request any files from the user accessible storage scope by making a HTTP request to the media endpoint. If you need backend processing after reading the file, use the filelib API instead.
 Media Stream Request To get a stream of media file from the server using virtual path, make a HTTP request to /media/ endpoint with ?file={{path}} GET parameter. Here is an example.
-GET /media?file=user:/Desktop/music.mp3 By default the header do not include Content-Disposition or Content-Type header.</p>
+GET /media?file=user:/Desktop/music.mp3 By default the header do not include Content-Disposition or Content-Type.</p>
+</div>
+
+
+<div class="summary mb-2">
+  
+  <h2 class="title-summary"><a href="https://aroz-online.github.io/ArozOS-Developers/docs/frontend_aomodule-utils/">🔹 ao_module utilities</a></h2>
+  <p>ao_module provide a list of utilities function which you can use to make developing WebApps easier.
+Usage To use the utilities functions, your fist need to import the ao_module wrapper as follows.
+&lt;script type=&#34;text/javascript&#34; src=&#34;../script/jquery.min.js&#34;&gt;&lt;/script&gt; &lt;script type=&#34;text/javascript&#34; src=&#34;../script/ao_module.js&#34;&gt;&lt;/script&gt; And call them with the static class name ao_module_utils. For example,
+let newUUID = ao_module_utils.getRandomUID(); //Return a random UUID from timestamp Objects Encoding objectToAttr(object) Convert objects into a DOM attribute safe string</p>
 </div>
 
 

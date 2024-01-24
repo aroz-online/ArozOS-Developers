@@ -12,7 +12,7 @@ To get a stream of media file from the server using virtual path, make a HTTP re
 GET /media?file=user:/Desktop/music.mp3
 ```
 
-By default the header do not include ```Content-Disposition``` or ```Content-Type``` header. If you want to prompt the user to download the target file, add ```&download=true``` after your filename as follows.
+By default the header do not include ```Content-Disposition``` or ```Content-Type```. If you want to prompt the user to download the target file, add ```&download=true``` after your filename as follows.
 
 ```text
 GET /media?file=user:/Desktop/music.mp3&download=true
