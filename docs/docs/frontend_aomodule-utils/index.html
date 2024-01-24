@@ -210,36 +210,36 @@
 </span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;text/javascript&#34;</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;../script/ao_module.js&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 </span></span></code></pre></div><p>And call them with the static class name <code>ao_module_utils</code>. For example,</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="kd">let</span> <span class="nx">newUUID</span> <span class="o">=</span> <span class="nx">ao_module_utils</span><span class="p">.</span><span class="nx">getRandomUID</span><span class="p">();</span> <span class="c1">//Return a random UUID from timestamp
-</span></span></span></code></pre></div><h2 id="objects-encoding">Objects Encoding</h2>
-<h3 id="objecttoattrobject">objectToAttr(object)</h3>
+</span></span></span></code></pre></div><h3 id="objects-encoding">Objects Encoding</h3>
+<h4 id="-objecttoattrobject">🔹 objectToAttr(object)</h4>
 <p>Convert objects into a DOM attribute safe string</p>
-<h3 id="attrtoobjectattr">attrToObject(attr)</h3>
+<h4 id="-attrtoobjectattr">🔹 attrToObject(attr)</h4>
 <p>Convert the DOM attribute string back to a JavaScript object</p>
-<h3 id="stringtoblobtext-mimetypetextplain">stringToBlob(text, mimetype=&ldquo;text/plain&rdquo;)</h3>
+<h4 id="-stringtoblobtext-mimetypetextplain">🔹 stringToBlob(text, mimetype=&ldquo;text/plain&rdquo;)</h4>
 <p>Convert string to blob object</p>
-<h3 id="blobtofileblob-filename-mimetypetextplain">blobToFile(blob, filename, mimetype=&ldquo;text/plain&rdquo;)</h3>
+<h4 id="-blobtofileblob-filename-mimetypetextplain">🔹 blobToFile(blob, filename, mimetype=&ldquo;text/plain&rdquo;)</h4>
 <p>Convert blob to File object.</p>
 <h2 id="file-utilities">File Utilities</h2>
-<h3 id="readfilefromfileobjectfileobject-successcallback-failedcallbackundefined">readFileFromFileObject(fileObject, successCallback, failedCallback=undefined)</h3>
+<h4 id="-readfilefromfileobjectfileobject-successcallback-failedcallbackundefined">🔹 readFileFromFileObject(fileObject, successCallback, failedCallback=undefined)</h4>
 <p>Read file object as text. Success callback will return the content of the file as string, while failed callback will return the reader error DOMException.</p>
-<h3 id="getdropfileinfodropevent">getDropFileInfo(dropEvent)</h3>
+<h4 id="-getdropfileinfodropevent">🔹 getDropFileInfo(dropEvent)</h4>
 <p>Get the drop file properties <code>{filepath: file_virtual_path, filename: file_name}</code> from file drop events from File Manager. Return <code>null</code> if this is not a drop event from File Manager</p>
-<h3 id="geticonfromextext">getIconFromExt(ext)</h3>
+<h4 id="-geticonfromextext">🔹 getIconFromExt(ext)</h4>
 <p>Return Semantic UI supported icon class name (without the icon class) as string from given file extension. For example</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="kd">let</span> <span class="nx">fileExt</span> <span class="o">=</span> <span class="s2">&#34;pdf&#34;</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="kd">let</span> <span class="nx">iconElement</span> <span class="o">=</span> <span class="sb">`&lt;i class=&#34;</span><span class="si">${</span><span class="nx">ao_module_utils</span><span class="p">.</span><span class="nx">getIconFromExt</span><span class="p">(</span><span class="nx">fileExt</span><span class="p">)</span><span class="si">}</span><span class="sb"> icon&#34;&gt;&lt;/i&gt;`</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1">//The icon element class will be &#34;file pdf outline icon&#34;
-</span></span></span></code></pre></div><h3 id="formatbytesbytes-decimalplace2">formatBytes(bytes, decimalPlace=2)</h3>
+</span></span></span></code></pre></div><h4 id="-formatbytesbytes-decimalplace2">🔹 formatBytes(bytes, decimalPlace=2)</h4>
 <p>Convert and rounds bytes into KB, MB, GB, TB up to YB (probably not need this anytime soon)</p>
 <h2 id="others">Others</h2>
-<h3 id="getrandomuid">getRandomUID()</h3>
+<h4 id="-getrandomuid">🔹 getRandomUID()</h4>
 <p>Get a random UUID base on current timestamp</p>
-<h3 id="durationconverterseconds">durationConverter(seconds)</h3>
+<h4 id="-durationconverterseconds">🔹 durationConverter(seconds)</h4>
 <p>Convert duration in seconds to Days / Hours / Minutes / Seconds</p>
-<h3 id="timeconverterunix_timestamp">timeConverter(unix_timestamp);</h3>
+<h4 id="-timeconverterunix_timestamp">🔹 timeConverter(unix_timestamp);</h4>
 <p>Get human readable timestamp from unix timestamp</p>
-<h3 id="getwebsocketendpoint">getWebSocketEndpoint()</h3>
+<h4 id="-getwebsocketendpoint">🔹 getWebSocketEndpoint()</h4>
 <p>Construct server websocket endpoint root from current client accessing URL. The URL is constrcuted on the front-end so it will use the hostname from where the client is connecting into the system as the root url for websocket connection. Here is an example if the user is connecting in via HTTP from LAN.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">ws://192.168.1.100:8080
 </span></span></code></pre></div><p>And here is another example user is connecting into your server via HTTPS domain</p>

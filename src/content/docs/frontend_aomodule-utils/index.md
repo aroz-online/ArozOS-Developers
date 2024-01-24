@@ -22,21 +22,21 @@ let newUUID = ao_module_utils.getRandomUID(); //Return a random UUID from timest
 
 
 
-## Objects Encoding
+### Objects Encoding
 
-### objectToAttr(object)
+#### 🔹 objectToAttr(object)
 
 Convert objects into a DOM attribute safe string
 
-### attrToObject(attr)
+#### 🔹 attrToObject(attr)
 
 Convert the DOM attribute string back to a JavaScript object
 
-### stringToBlob(text, mimetype="text/plain") 
+#### 🔹 stringToBlob(text, mimetype="text/plain") 
 
 Convert string to blob object
 
-### blobToFile(blob, filename, mimetype="text/plain")
+#### 🔹 blobToFile(blob, filename, mimetype="text/plain")
 
 Convert blob to File object. 
 
@@ -44,15 +44,15 @@ Convert blob to File object.
 
 ## File Utilities
 
-### readFileFromFileObject(fileObject, successCallback, failedCallback=undefined) 
+#### 🔹 readFileFromFileObject(fileObject, successCallback, failedCallback=undefined) 
 
 Read file object as text. Success callback will return the content of the file as string, while failed callback will return the reader error DOMException.
 
-### getDropFileInfo(dropEvent)
+#### 🔹 getDropFileInfo(dropEvent)
 
 Get the drop file properties ```{filepath: file_virtual_path, filename: file_name}``` from file drop events from File Manager. Return ```null``` if this is not a drop event from File Manager 
 
-### getIconFromExt(ext)
+#### 🔹 getIconFromExt(ext)
 
 Return Semantic UI supported icon class name (without the icon class) as string from given file extension. For example
 
@@ -63,7 +63,7 @@ let iconElement = `<i class="${ao_module_utils.getIconFromExt(fileExt)} icon"></
 //The icon element class will be "file pdf outline icon"
 ```
 
-### formatBytes(bytes, decimalPlace=2) 
+#### 🔹 formatBytes(bytes, decimalPlace=2) 
 
 Convert and rounds bytes into KB, MB, GB, TB up to YB (probably not need this anytime soon)
 
@@ -71,19 +71,19 @@ Convert and rounds bytes into KB, MB, GB, TB up to YB (probably not need this an
 
 ## Others
 
-### getRandomUID()
+#### 🔹 getRandomUID()
 
 Get a random UUID base on current timestamp
 
-### durationConverter(seconds) 
+#### 🔹 durationConverter(seconds) 
 
 Convert duration in seconds to Days / Hours / Minutes / Seconds
 
-### timeConverter(unix_timestamp); 
+#### 🔹 timeConverter(unix_timestamp); 
 
 Get human readable timestamp from unix timestamp
 
-### getWebSocketEndpoint() 
+#### 🔹 getWebSocketEndpoint() 
 
 Construct server websocket endpoint root from current client accessing URL. The URL is constrcuted on the front-end so it will use the hostname from where the client is connecting into the system as the root url for websocket connection. Here is an example if the user is connecting in via HTTP from LAN.
 
