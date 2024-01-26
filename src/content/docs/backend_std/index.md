@@ -56,25 +56,19 @@ deleteDBItem("tablename", "key");
 registerModule(JSON.stringify(moduleLaunchInfo)); //See start script sections for examples
 ```
 
-#### Structure & OOP
-
-```javascript
-includes("hello world.js"); //Include another js / agi file within the current running one, return false if failed
-```
-
 #### Include other script files
 
 You can also include another js / agi file to load shared code between scripts
 
-```
-includes("hello world.js")
+```js
+includes("hello world.js"); //Include another js / agi file within the current running one, return false if failed
 ```
 
 #### Print to STDOUT (console)
 
 To print something for debug, you can print text directly to ArOZ Online Core terminal using
 
-```
+```js
 console.log("text");
 ```
 
@@ -82,7 +76,7 @@ console.log("text");
 
 Synchronized delay (or blocking delay) can be used with the delay function (ms)
 
-```
+```js
 delay(5000);
 ```
 
@@ -92,17 +86,15 @@ For async delayed / timer ticking operations like setTimeout or setInterval is c
 
 Instantly terminate and exit the runtime
 
-```
+```js
 exit();
 ```
-
-
 
 ------
 
 #### Deprecated
 
-Deprecated since v2.108
+Deprecated since v2.018: ffmpeg exec was replaced by work in progress ffmpeg library in agi core.
 
 ```
 requirepkg("ffmpeg");

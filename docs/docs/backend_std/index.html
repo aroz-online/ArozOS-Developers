@@ -230,24 +230,22 @@ For example, you can serve an HTML file using agi gateway</p>
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">deleteDBItem</span><span class="p">(</span><span class="s2">&#34;tablename&#34;</span><span class="p">,</span> <span class="s2">&#34;key&#34;</span><span class="p">);</span>
 </span></span></code></pre></div><h4 id="register-and-packages">Register and Packages</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">registerModule</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">moduleLaunchInfo</span><span class="p">));</span> <span class="c1">//See start script sections for examples
-</span></span></span></code></pre></div><h4 id="structure--oop">Structure &amp; OOP</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">includes</span><span class="p">(</span><span class="s2">&#34;hello world.js&#34;</span><span class="p">);</span> <span class="c1">//Include another js / agi file within the current running one, return false if failed
 </span></span></span></code></pre></div><h4 id="include-other-script-files">Include other script files</h4>
 <p>You can also include another js / agi file to load shared code between scripts</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">includes(&#34;hello world.js&#34;)
-</span></span></code></pre></div><h4 id="print-to-stdout-console">Print to STDOUT (console)</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="nx">includes</span><span class="p">(</span><span class="s2">&#34;hello world.js&#34;</span><span class="p">);</span> <span class="c1">//Include another js / agi file within the current running one, return false if failed
+</span></span></span></code></pre></div><h4 id="print-to-stdout-console">Print to STDOUT (console)</h4>
 <p>To print something for debug, you can print text directly to ArOZ Online Core terminal using</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">console.log(&#34;text&#34;);
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;text&#34;</span><span class="p">);</span>
 </span></span></code></pre></div><h4 id="delayed-operations">Delayed operations</h4>
 <p>Synchronized delay (or blocking delay) can be used with the delay function (ms)</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">delay(5000);
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="nx">delay</span><span class="p">(</span><span class="mi">5000</span><span class="p">);</span>
 </span></span></code></pre></div><p>For async delayed / timer ticking operations like setTimeout or setInterval is currently not supported.</p>
 <h4 id="exit--terminate-runtime">Exit &amp; Terminate Runtime</h4>
 <p>Instantly terminate and exit the runtime</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">exit();
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="nx">exit</span><span class="p">();</span>
 </span></span></code></pre></div><hr>
 <h4 id="deprecated">Deprecated</h4>
-<p>Deprecated since v2.108</p>
+<p>Deprecated since v2.018: ffmpeg exec was replaced by work in progress ffmpeg library in agi core.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">requirepkg(&#34;ffmpeg&#34;);
 </span></span><span class="line"><span class="cl">execpkg(&#34;ffmpeg&#34;,&#39;-i &#34;files/users/TC/Desktop/群青.mp3&#34; &#34;files/users/TC/Desktop/群青.flac&#39;); //ffmpeg must be required() before use
 </span></span></code></pre></div>
