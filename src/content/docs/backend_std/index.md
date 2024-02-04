@@ -43,9 +43,10 @@ sendJSONResp({foo: 'bar'}); //ArozOS v2 only
 
 ```javascript
 newDBTableIfNotExists("tablename");
+DBTableExists("tablename"); //Return true/false
 dropDBTable("tablename");
 writeDBItem("tablename", "key", "value");
-readDBItem("tablename", "key");
+readDBItem("tablename", "key"); //Return false if read failed
 listDBTable("tablename"); //Return key value array
 deleteDBItem("tablename", "key");
 ```
