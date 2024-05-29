@@ -9,6 +9,15 @@ This is a repo contains the documentation for developing apps or service for Aro
 
 - Hugo (extended version)
 
+#### Editing
+To view edited content in real time, cd into the `src` folder and run 
+```
+cd ./src/
+hugo server
+```
+
+Following that, open `http://localhost:1313/ArozOS-Developers/` in your browser to see real-time changes.
+
 #### Build From Source
 
 ```
