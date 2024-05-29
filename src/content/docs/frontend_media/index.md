@@ -20,8 +20,6 @@ GET /media?file=user:/Desktop/music.mp3&download=true
 
 This method is only suitable for filenames that contains only ASCII characters and no special characters like ```+``` or ```?```. If you are not sure the filename of the user selected, use the ```/media/download/``` endpoint instead.
 
-If gzip is enabled and the ```&download=true``` download request is used, the browser will not know the file size and thus, the download progress will not show on browser.
-
 ### Media Download Request
 To start file download in a new browser tab, you can redirect user to the ```/media/download/``` endpoint with ```?file={{path}}``` parameter. Here is an example of such use cases.
 
@@ -30,6 +28,25 @@ window.open("/media/download/?file=user:/Desktop/music.mp3");
 ```
 
 The response will then contains the ```Content-Disposition``` and ```Content-Type``` header.
+
+### Media Transcode Request (v2.020+)
+
+Video file real-time transcode can be done using the `/media/transcode/` endpoint to serve your video. This mode allows video files that is not natively supported by web playback be streamed on the web-desktop interface. 
+
+```
+GET /media/transcode?file=user:/Video/demo.rmvb
+```
+
+This API also support a few output resolution. Use `&res={{resolution_enum}}`to force output resolution. Supported resolution_enum as follows.
+
+| resolution_enum              | Matching ffmpeg scale                          |
+| ---------------------------- | ---------------------------------------------- |
+| "360p"                       | scale=-1:360                                   |
+| "720p"                       | scale=-1:720                                   |
+| "1080p"                      | scale=-1:1080                                  |
+| "" (Empty string or not set) | (unset, default to the source file resolution) |
+
+Note that this function will redirect to `/media/` endpoint if FFmpeg is not installed on the host running ArozOS. 
 
 ### Media MIME Request
 The ```/media/getMime/``` endpoint will return the target file's MIME type as text/plain. Here is an example usage.

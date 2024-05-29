@@ -210,11 +210,41 @@
 </span></span></code></pre></div><p>By default the header do not include <code>Content-Disposition</code> or <code>Content-Type</code>. If you want to prompt the user to download the target file, add <code>&amp;download=true</code> after your filename as follows.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">GET /media?file=user:/Desktop/music.mp3&amp;download=true
 </span></span></code></pre></div><p>This method is only suitable for filenames that contains only ASCII characters and no special characters like <code>+</code> or <code>?</code>. If you are not sure the filename of the user selected, use the <code>/media/download/</code> endpoint instead.</p>
-<p>If gzip is enabled and the <code>&amp;download=true</code> download request is used, the browser will not know the file size and thus, the download progress will not show on browser.</p>
 <h3 id="media-download-request">Media Download Request</h3>
 <p>To start file download in a new browser tab, you can redirect user to the <code>/media/download/</code> endpoint with <code>?file={{path}}</code> parameter. Here is an example of such use cases.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nb">window</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s2">&#34;/media/download/?file=user:/Desktop/music.mp3&#34;</span><span class="p">);</span>
 </span></span></code></pre></div><p>The response will then contains the <code>Content-Disposition</code> and <code>Content-Type</code> header.</p>
+<h3 id="media-transcode-request-v2020">Media Transcode Request (v2.020+)</h3>
+<p>Video file real-time transcode can be done using the <code>/media/transcode/</code> endpoint to serve your video. This mode allows video files that is not natively supported by web playback be streamed on the web-desktop interface.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">GET /media/transcode?file=user:/Video/demo.rmvb
+</span></span></code></pre></div><p>This API also support a few output resolution. Use <code>&amp;res={{resolution_enum}}</code>to force output resolution. Supported resolution_enum as follows.</p>
+<table>
+<thead>
+<tr>
+<th>resolution_enum</th>
+<th>Matching ffmpeg scale</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&ldquo;360p&rdquo;</td>
+<td>scale=-1:360</td>
+</tr>
+<tr>
+<td>&ldquo;720p&rdquo;</td>
+<td>scale=-1:720</td>
+</tr>
+<tr>
+<td>&ldquo;1080p&rdquo;</td>
+<td>scale=-1:1080</td>
+</tr>
+<tr>
+<td>&quot;&quot; (Empty string or not set)</td>
+<td>(unset, default to the source file resolution)</td>
+</tr>
+</tbody>
+</table>
+<p>Note that this function will redirect to <code>/media/</code> endpoint if FFmpeg is not installed on the host running ArozOS.</p>
 <h3 id="media-mime-request">Media MIME Request</h3>
 <p>The <code>/media/getMime/</code> endpoint will return the target file&rsquo;s MIME type as text/plain. Here is an example usage.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">GET /media/getMime/?file=user:/Desktop/mysite.html
